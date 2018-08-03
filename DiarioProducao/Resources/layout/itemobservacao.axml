@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ItemObservacao"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="horizontal"
+  android:weightSum="100"
+  android:baselineAligned="false"
+  android:paddingLeft="5dip"
+  android:paddingRight="5dip" >
+  <!--
+  Observacao
+-->
+  <TextView
+    android:id="@+id/txtObservacao"
+    android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_vertical"
+    android:layout_marginRight="5dip"
+    android:layout_weight="100"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+
+</LinearLayout>

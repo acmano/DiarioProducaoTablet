@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -7,5 +6,124 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+  <style name="LorenTheme" parent="android:Theme.Holo.Light">
+    <item name="android:textViewStyle">@style/LorenTheme.TextView</item>
+    <item name="android:editTextStyle">@style/LorenTheme.EditText</item>
+    <item name="android:spinnerStyle">@style/LorenTheme.Spinner</item>
+    <item name="android:dropDownSpinnerStyle">@style/LorenTheme.Spinner</item>
+    <item name="android:alertDialogStyle">@style/LorenTheme.AlertDialog</item>
+    <item name="android:alertDialogTheme">@style/LorenTheme.AlertDialog</item>
+    <item name="android:buttonStyle">@style/LorenTheme.Button</item>
+    <item name="android:spinnerItemStyle">@style/LorenTheme.SpinnerItem</item>
+    <item name="android:checkboxStyle">@style/LorenTheme.CheckBox</item>
+    <item name="android:radioButtonStyle">@style/LorenTheme.RadioButton</item>
+    <item name="android:expandableListViewStyle">@style/LorenTheme.ExpandableListView</item>
+    <item name="android:listViewStyle">@style/LorenTheme.ListView</item>
+    <item name="android:progressBarStyle">@style/LorenTheme.ProgressBar</item>
+    <item name="android:itemTextAppearance">@style/LorenTheme.ItemTextAppearance</item>
+    <item name="android:tabWidgetStyle">@style/LorenTheme.TabWidget</item>
+    <item name="android:autoCompleteTextViewStyle">@style/LorenTheme.AutoCompleteTextView</item>
+    <item name="android:actionButtonStyle">@style/ActionButton</item>
+  </style>
+
+  <style name="LorenTheme.TabWidget">
+    <item name="android:divider">@null</item>
+  </style>
+
+  <style name="LorenTheme.TextView" parent="android:Widget.TextView" />
+
+  <style name="LorenTheme.EditText" parent="android:Widget.EditText">
+    <item name="android:background">@drawable/loren_theme_select_edit_text</item>
+  </style>
+
+  <style name="LorenTheme.Spinner" parent="android:Widget.Holo.Light.Spinner">
+    <item name="android:background">@drawable/loren_theme_select_spinner_background</item>
+    <item name="android:paddingBottom">0dp</item>
+    <item name="android:paddingTop">0dp</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:paddingLeft">5dp</item>
+  </style>
+
+  <style name="LorenTheme.SpinnerItem">
+    <item name="android:minHeight">40dp</item>
+    <item name="android:paddingLeft">15dp</item>
+    <item name="android:paddingRight">20dp</item>
+    <item name="android:gravity">center_vertical</item>
+  </style>
+
+  <style name="LorenTheme.AlertDialog">
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowCloseOnTouchOutside">true</item>
+
+    <item name="android:topDark">@drawable/loren_theme_dialog_title</item>
+    <item name="android:fullBright">@drawable/loren_theme_dialog_body</item>
+    <item name="android:fullDark">@drawable/loren_theme_dialog_body_fulldark</item>
+    <item name="android:centerBright">@drawable/loren_theme_dialog_body</item>
+    <item name="android:centerMedium">@drawable/loren_theme_dialog_body</item>
+    <item name="android:centerDark">@drawable/loren_theme_dialog_body</item>
+    <item name="android:bottomDark">@drawable/loren_theme_dialog_footer</item>
+    <item name="android:bottomBright">@drawable/loren_theme_dialog_footer</item>
+    <item name="android:bottomMedium">@drawable/loren_theme_dialog_footer</item>
+
+    <item name="android:buttonBarButtonStyle">@style/LorenTheme.ButtonBarButton</item>
+    <item name="android:buttonBarStyle">@style/LorenTheme.ButtonBar</item>
+  </style>
+
+  <style name="LorenTheme.ButtonBarButton">
+    <item name="android:background">@drawable/loren_theme_select_button</item>
+    <item name="android:paddingRight">40dp</item>
+    <item name="android:paddingLeft">40dp</item>
+  </style>
+
+  <style name="LorenTheme.ButtonBar">
+    <item name="android:layout_marginTop">5dp</item>
+    <item name="android:layout_marginBottom">7dp</item>
+    <item name="android:divider">@null</item>
+  </style>
+
+  <style name="LorenTheme.Button" parent="android:Widget.Button">
+    <item name="android:background">@drawable/loren_theme_select_button</item>
+    <item name="android:textSize">16dp</item>
+  </style>
+
+  <style name="LorenTheme.CheckBox" parent="android:Widget.CompoundButton.CheckBox">
+    <item name="android:button">@drawable/loren_theme_select_checkbox</item>
+    <item name="android:textSize">16dp</item>
+  </style>
+
+  <style name="LorenTheme.RadioButton" parent="android:Widget.CompoundButton.RadioButton">
+    <item name="android:button">@drawable/loren_theme_select_radio</item>
+    <item name="android:textSize">16dp</item>
+  </style>
+
+  <style name="LorenTheme.ExpandableListView" parent="android:Widget.Holo.Light.ExpandableListView">
+    <item name="android:groupIndicator">@drawable/loren_theme_select_expander_group</item>
+  </style>
+
+  <style name="LorenTheme.ListView" parent="android:Widget.Holo.Light.ListView">
+    <item name="android:background">#ffffffff</item>
+  </style>
+
+  <style name="LorenTheme.ItemTextAppearance">
+    <item name="android:textSize">24dp</item>
+  </style>
+
+  <style name="LorenTheme.ProgressBar" parent="android:Widget.ProgressBar">
+    <item name="android:indeterminateDrawable">@drawable/loren_theme_progress_white</item>
+    <item name="android:animationResolution">33</item>
+  </style>
+
+  <style name="LorenTheme.AutoCompleteTextView" parent="android:Widget.Holo.Light.AutoCompleteTextView">
+    <item name="android:background">@drawable/loren_theme_select_edit_text</item>
+  </style>
+
+  <style name="ActionButton" parent="@android:style/Widget.ActionButton">
+    <item name="android:drawablePadding">6dp</item>
+  </style>
+
 
 </resources>

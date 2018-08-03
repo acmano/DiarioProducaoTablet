@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ProducaoDetalheItem"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:weightSum="100"
+  android:baselineAligned="false"
+  android:paddingLeft="5dip"
+  android:paddingRight="5dip"
+>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+  >
+    <!--
+    Código do Item
+    -->
+    <TextView
+      android:id="@+id/txtCodigoItem"
+      android:text="7530115"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="left|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="22"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Descrição do item
+    -->
+    <TextView
+      android:id="@+id/txtDescricaoItem"
+      android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="left|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="36"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Hora Início
+    -->
+    <TextView
+      android:id="@+id/txtHoraInicio"
+      android:text="XX:XX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="right|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="16"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Hora Fim
+    -->
+    <TextView
+      android:id="@+id/txtHoraFim"
+      android:text="XX:XX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="right|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="16"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Quantidade Informada
+    -->
+    <TextView
+      android:id="@+id/txtQuantidadeInformada"
+      android:text="XXXXX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="right|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="10"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+  </LinearLayout>
+  <!--
+  Linha de separação
+  -->
+  <View
+    android:id="@+id/separador3"
+    android:layout_below="@id/filtros"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent"
+    android:background="#000000"
+  />
+</LinearLayout>

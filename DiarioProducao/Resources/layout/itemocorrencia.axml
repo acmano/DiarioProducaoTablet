@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ItemObservacao"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="horizontal"
+  android:weightSum="100"
+  android:baselineAligned="false"
+  android:paddingLeft="2dip"
+  android:paddingRight="2dip" >
+  <!--
+  Hora da Ocorrência
+-->
+  <!--
+  Hora da Ocorrência
+-->
+  <TextView
+    android:id="@+id/txtDataOcorrencia"
+    android:text="DD/MM/AAA HH:MM:SS"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center|center_vertical"
+    android:layout_marginRight="2dip"
+    android:layout_weight="17"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+  <!--
+    Código da Ocorrência
+  -->
+  <TextView
+    android:id="@+id/txtCodigoOcorrencia"
+    android:text="XXXXXXXXXXXXXXX"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="center|center_vertical"
+    android:layout_marginRight="2dip"
+    android:layout_weight="13"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+  <!--
+    Descrição da Ocorrência
+  -->
+  <TextView
+    android:id="@+id/txtDescricaoOcorrencia"
+    android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_vertical"
+    android:layout_weight="70"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+</LinearLayout>

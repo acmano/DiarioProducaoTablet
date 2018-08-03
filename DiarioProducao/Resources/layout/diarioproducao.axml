@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/DiarioProducaoDetalhe"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:weightSum="100"
+  android:baselineAligned="false"
+  android:paddingLeft="5dip"
+  android:paddingRight="5dip"
+>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+  >
+    <!--
+    Data da Produção
+    -->
+    <TextView
+      android:id="@+id/txtDatProducao"
+      android:text="23/01/2018"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="center|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="20"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Linha de Producao
+    -->
+    <TextView
+      android:id="@+id/txtLinhaDescricao"
+      android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="center|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="40"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+    <!--
+      Turno de Trabalho
+    -->
+    <TextView
+      android:id="@+id/txtTurnoDescricao"
+      android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:gravity="center|center_vertical"
+      android:layout_marginRight="5dip"
+      android:layout_weight="40"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+    />
+  </LinearLayout>
+  <!--
+  Linha de separação
+  -->
+  <View
+    android:id="@+id/separador3"
+    android:layout_below="@id/filtros"
+    android:layout_height="1dp"
+    android:layout_width="fill_parent"
+    android:background="#000000"
+  />
+</LinearLayout>

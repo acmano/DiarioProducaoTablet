@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/llPopUp"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+>
+  <!--
+    Linha detalhe
+  -->
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+  >
+    <!--
+  Codigo do detalhe
+-->
+    <TextView
+      android:id="@+id/txtCodigoItem"
+      android:text="99999999999999"
+      android:layout_height="wrap_content"
+      android:layout_width="145dp"
+      android:textColor="#000000"
+      android:gravity="left"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_marginLeft="10dp"
+    />
+    <!--
+      Descricao do detalhe
+    -->
+    <TextView
+      android:id="@+id/txtDescricaoItem"
+      android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      android:layout_height="wrap_content"
+      android:layout_width="fill_parent"
+      android:textColor="#000000"
+      android:gravity="left"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_marginLeft="10dp"
+    />
+  </LinearLayout>
+</LinearLayout>

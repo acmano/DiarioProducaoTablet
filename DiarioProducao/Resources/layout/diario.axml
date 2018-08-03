@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingLeft="16dp"
+  android:paddingRight="16dp" >
+  <!--
+    Layout da linha de entrada de dados
+  -->
+  <LinearLayout
+    android:id="@+id/filtros"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+  >
+    <!--
+      Layout da área de Data
+    -->
+    <LinearLayout
+      android:id="@+id/Data"
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_weight="2"
+      android:layout_marginRight="10dp"
+    >
+      <!--
+        Label do campo "Data"
+      -->
+      <TextView
+        android:id="@+id/lblData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Data :"
+      />
+      <!--
+        Campo "Data"
+      -->
+      <EditText
+        android:id="@+id/txtData"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblData"
+      />
+    </LinearLayout>
+    <!--
+      Layout da área de Linha de Produção
+    -->
+    <LinearLayout
+      android:id="@+id/Linha"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_weight="5"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+    >
+      <!--
+        Label do campo "Linha"
+      -->
+      <TextView
+        android:id="@+id/lblLinha"
+        android:text="Linha :"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+      />
+      <LinearLayout
+        android:id="@+id/LinhaCampos"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+      >
+        <!--
+          Campo "DenLinha"
+        -->
+        <EditText
+          android:id="@+id/txtDenLinha"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+        />
+      </LinearLayout>
+    </LinearLayout>
+    <!--
+      Layout da área de Turno
+    -->
+    <LinearLayout
+      android:id="@+id/Turno"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginLeft="10dp"
+      android:layout_weight="5"
+    >
+      <!--
+        Label do campo "Turno"
+      -->
+      <TextView
+        android:id="@+id/lblTurno"
+        android:text="Turno :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+      />
+      <LinearLayout
+        android:id="@+id/TurnoCampos"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+      >
+        <!--
+          Campo "DenTurno"
+        -->
+        <EditText
+          android:id="@+id/txtDenTurno"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+        />
+      </LinearLayout>
+    </LinearLayout>
+    <!--
+      Botão de pesquisa
+    -->
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_gravity="center|center"
+      android:gravity="center"
+      android:layout_weight="1"
+    >
+      <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Pesquisar"
+        android:id="@+id/btnPesquisar"
+        android:layout_marginLeft="10dp"
+      />
+      <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Limpar"
+        android:id="@+id/btnLimpar"
+        android:layout_marginRight="10dp"
+      />
+    </LinearLayout>
+  </LinearLayout>
+  <!--
+    Linha de separação
+  -->
+  <View
+    android:id="@+id/separador2"
+    android:layout_below="@id/filtros"
+    android:layout_height="2dp"
+    android:layout_width="fill_parent"
+    android:background="#000000"
+  />
+  <!--
+    Área de dados
+  -->
+  <LinearLayout
+    android:id="@+id/dados"
+    android:layout_below="@id/filtros"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+  >
+    <!--
+      Área de dados: Produção
+    -->
+    <RelativeLayout
+      android:id="@+id/dadosItens"
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="100"
+    >
+      <!--
+        Grid de itens
+      -->
+      <LinearLayout
+        android:id="@+id/gridItens"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+      >
+        <!--
+          Título do grid de itens
+        -->
+        <TextView
+          android:id="@+id/txtProducoesQuantidade"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:textAppearance="?android:attr/textAppearanceMedium"
+          android:text="Produção"
+        />
+        <!--
+          Linha de separação
+        -->
+        <View
+          android:id="@+id/separador3"
+          android:layout_below="@id/filtros"
+          android:layout_height="2dp"
+          android:layout_width="fill_parent"
+          android:background="#000000"
+        />
+        <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="fill_parent"
+          android:layout_height="30dp"
+          android:gravity="center_vertical"
+          android:background="@drawable/loren_theme_listview_title"
+        >
+          <TextView
+            android:text="Dia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:layout_marginRight="5dip"
+            android:layout_weight="20"
+          />
+          <TextView
+            android:text="Linha de Produção"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:layout_marginRight="5dip"
+            android:layout_weight="40"
+          />
+          <TextView
+            android:text="Turno de Trabalho"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:layout_marginRight="5dip"
+            android:layout_weight="40"
+          />
+        </LinearLayout>
+        <!--
+          Linha de separação
+        -->
+        <View
+          android:id="@+id/separador4"
+          android:layout_below="@id/filtros"
+          android:layout_height="2dp"
+          android:layout_width="fill_parent"
+          android:background="#000000"
+        />
+        <!--
+          Lista de itens
+        -->
+        <ListView
+          android:id="@+id/listProducoes"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:dividerHeight="1dp"
+          android:drawSelectorOnTop="false"
+        />
+      </LinearLayout>
+    </RelativeLayout>
+  </LinearLayout>
+</RelativeLayout>

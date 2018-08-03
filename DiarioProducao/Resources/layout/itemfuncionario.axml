@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tela completa
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ItemFuncionario"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="horizontal"
+  android:weightSum="100"
+  android:baselineAligned="false"
+  android:paddingLeft="5dip"
+  android:paddingRight="5dip" >
+  <!--
+    Matrícula do funcionário
+  -->
+  <TextView
+    android:id="@+id/txtMatriculaFuncionario"
+    android:text="XXXXXX"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="right|center_vertical"
+    android:layout_marginRight="5dip"
+    android:layout_weight="15"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+  <!--
+    Nome do Funcionário
+  -->
+  <TextView
+    android:id="@+id/txtNomeFuncionario"
+    android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_vertical"
+    android:layout_marginRight="5dip"
+    android:layout_weight="85"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+  />
+</LinearLayout>
