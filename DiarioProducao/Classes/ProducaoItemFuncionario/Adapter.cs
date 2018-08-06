@@ -9,140 +9,58 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.ProducaoItemFuncionario
 {
-  using Android;
+
 
   public class Detalhe
   {
 
     public class Colunas
     {
-      private Int64 _serieProducaoItemFuncionario;
-      private Int64 _serieProducaoItem;
-      private Int64 _serieFuncionario;
-      private Int64 _matriculaFuncionario;
-      private String _nomeFuncionario;
 
-      public Int64 SerieProducaoItemFuncionario
-      {
-        get
-        {
-          return _serieProducaoItemFuncionario;
-        }
-        set
-        {
-          _serieProducaoItemFuncionario = value;
-        }
-      }
-
-      public Int64 SerieProducaoItem
-      {
-        get
-        {
-          return _serieProducaoItem;
-        }
-        set
-        {
-          _serieProducaoItem = value;
-        }
-      }
-
-      public Int64 SerieFuncionario
-      {
-        get
-        {
-          return _serieFuncionario;
-        }
-        set
-        {
-          _serieFuncionario = value;
-        }
-      }
-
-      public Int64 MatriculaFuncionario
-      {
-        get
-        {
-          return _matriculaFuncionario;
-        }
-        set
-        {
-          _matriculaFuncionario = value;
-        }
-      }
-
-      public String NomeFuncionario
-      {
-        get
-        {
-          return _nomeFuncionario;
-        }
-        set
-        {
-          _nomeFuncionario = value;
-        }
-      }
+      public Int64 SerieProducaoItemFuncionario { get; set; }
+      public Int64 SerieProducaoItem { get; set; }
+      public Int64 SerieFuncionario { get; set; }
+      public Int64 MatriculaFuncionario { get; set; }
+      public String NomeFuncionario { get; set; }
 
       public Colunas ( )
       {
-        _serieProducaoItemFuncionario = 0L;
-        _serieProducaoItem = 0L;
-        _serieFuncionario = 0L;
-        _matriculaFuncionario = 0L;
-        _nomeFuncionario = String.Empty;
+        SerieProducaoItemFuncionario = 0L;
+        SerieProducaoItem = 0L;
+        SerieFuncionario = 0L;
+        MatriculaFuncionario = 0L;
+        NomeFuncionario = String.Empty;
       }
 
       public Colunas ( Int64 serieProducaoOcorrencia, Int64 serieProducaoItem, Int64 serieFuncionario, Int64 matriculaFuncionario, String nomeFuncionario )
       {
-        _serieProducaoItemFuncionario = serieProducaoOcorrencia;
-        _serieProducaoItem = serieProducaoItem;
-        _serieFuncionario = serieFuncionario;
-        _matriculaFuncionario = matriculaFuncionario;
-        _nomeFuncionario = nomeFuncionario;
+        SerieProducaoItemFuncionario = serieProducaoOcorrencia;
+        SerieProducaoItem = serieProducaoItem;
+        SerieFuncionario = serieFuncionario;
+        MatriculaFuncionario = matriculaFuncionario;
+        NomeFuncionario = nomeFuncionario;
       }
 
       public Colunas ( SqlDataReader reader )
       {
-        _serieProducaoItemFuncionario = Convert.ToInt64 ( reader [ "serie_producao_item_funcionario" ] );
-        _serieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
-        _serieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
-        _matriculaFuncionario = Convert.ToInt64 ( reader [ "matricula_funcionario" ] );
-        _nomeFuncionario = reader [ "nome_funcionario" ].ToString ( );
+        SerieProducaoItemFuncionario = Convert.ToInt64 ( reader [ "serie_producao_item_funcionario" ] );
+        SerieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
+        SerieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
+        MatriculaFuncionario = Convert.ToInt64 ( reader [ "matricula_funcionario" ] );
+        NomeFuncionario = reader [ "nome_funcionario" ].ToString ( );
       }
 
     }
 
-    private Int64 _serieProducaoItem;
-    private Colunas _colunasDetalhe;
+    public Int64 SerieProducaoItem { get; set; }
 
-    public Int64 SerieProducaoItem
-    {
-      get
-      {
-        return _serieProducaoItem;
-      }
-      set
-      {
-        _serieProducaoItem = value;
-      }
-    }
-
-    public Colunas ColunasDetalhe
-    {
-      get
-      {
-        return _colunasDetalhe;
-      }
-      set
-      {
-        _colunasDetalhe = value;
-      }
-    }
+    public Colunas ColunasDetalhe { get; set; }
 
 
     private void DetalheVazio ( )
     {
-      _serieProducaoItem = 0L;
-      _colunasDetalhe = new Colunas ( );
+      SerieProducaoItem = 0L;
+      ColunasDetalhe = new Colunas ( );
     }
 
     public Detalhe ( )
@@ -152,16 +70,16 @@ namespace DiarioProducao.Classes.ProducaoItemFuncionario
 
     public Detalhe ( Int64 serieProducaoItemFuncionario, Int64 serieProducaoItem, Int64 serieFuncionario, Int64 matriculaFuncionario, String nomeFuncionario )
     {
-      _serieProducaoItem = serieProducaoItem;
-      _colunasDetalhe = new Colunas ( serieProducaoItemFuncionario, serieProducaoItem, serieFuncionario, matriculaFuncionario, nomeFuncionario );
+      SerieProducaoItem = serieProducaoItem;
+      ColunasDetalhe = new Colunas ( serieProducaoItemFuncionario, serieProducaoItem, serieFuncionario, matriculaFuncionario, nomeFuncionario );
     }
 
     public Detalhe ( SqlDataReader reader )
     {
       try
       {
-        _serieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
-        _colunasDetalhe = new Colunas ( reader );
+        SerieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
+        ColunasDetalhe = new Colunas ( reader );
       }
       catch ( Exception )
       {
@@ -232,27 +150,25 @@ namespace DiarioProducao.Classes.ProducaoItemFuncionario
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.ItemFuncionario, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.itemfuncionario, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-        //aquivar matriculaFuncionario = view.FindViewById ( Resource.Id.txtMatriculaFuncionario ) as TextView;
-        //if ( matriculaFuncionario != null )
-        //{
-        //  if ( detalhe.ColunasDetalhe.MatriculaFuncionario != 0L )
-        //  {
-        //    matriculaFuncionario.SetText ( detalhe.ColunasDetalhe.MatriculaFuncionario.ToString ( ).Trim ( ), TextView.BufferType.Normal );
-        //  }
-        //  else
-        //  {
-        //    matriculaFuncionario.SetText ( " ", TextView.BufferType.Normal );
-        //  }
-        //}
-        //var nomeFuncionario = view.FindViewById ( Resource.Id.txtNomeFuncionario ) as TextView;
-        //if ( nomeFuncionario != null )
-        //{
-        //  nomeFuncionario.SetText ( detalhe.ColunasDetalhe.NomeFuncionario.Trim ( ), TextView.BufferType.Normal );
-        //}
+        if (view.FindViewById( Resource.Id.txtMatriculaFuncionario ) is TextView matriculaFuncionario)
+        {
+          if (detalhe.ColunasDetalhe.MatriculaFuncionario != 0L)
+          {
+            matriculaFuncionario.SetText( detalhe.ColunasDetalhe.MatriculaFuncionario.ToString().Trim(), TextView.BufferType.Normal );
+          }
+          else
+          {
+            matriculaFuncionario.SetText( " ", TextView.BufferType.Normal );
+          }
+        }
+        if (view.FindViewById( Resource.Id.txtNomeFuncionario ) is TextView nomeFuncionario)
+        {
+          nomeFuncionario.SetText( detalhe.ColunasDetalhe.NomeFuncionario.Trim(), TextView.BufferType.Normal );
+        }
       }
       return view;
     }

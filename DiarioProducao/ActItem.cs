@@ -9,7 +9,7 @@ using Lorenzetti.DB;
 
 namespace DiarioProducao
 {
-  
+
   [
     Activity
     (
@@ -61,8 +61,8 @@ namespace DiarioProducao
     private ProgressDialog                                                           _progress;
     private ProgressDialogTask                                                       _task;
 
-    
-    
+
+
     protected override void OnCreate ( Bundle bundle )
     {
       base.OnCreate ( bundle );
@@ -193,7 +193,7 @@ namespace DiarioProducao
       _txtProducaoItemOcorrenciasQuantidade = FindViewById<TextView> ( Resource.Id.txtProducaoItemOcorrenciasQuantidade );               // Associa um objeto a um elemento do XML
       _txtProducaoItemOcorrenciasQuantidade.InputType = InputTypes.Null;                                                                 // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
     }
-    
+
     private void DefineCampoproducaoItemFuncionariosQuantidade()
     {
       _txtProducaoItemFuncionariosQuantidade = FindViewById<TextView> ( Resource.Id.txtProducaoItemFuncionariosQuantidade );               // Associa um objeto a um elemento do XML

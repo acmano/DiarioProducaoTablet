@@ -4,7 +4,7 @@ namespace DiarioProducao.Classes.Comum
 {
   public class AcessoSql
   {
-    
+
     private readonly String _openQuery;
     private readonly String _server;
     private readonly String _userName;

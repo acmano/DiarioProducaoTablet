@@ -11,20 +11,9 @@ namespace DiarioProducao.Classes.LinhaMontagem
   {
     public class Pk
     {
-      private Int64 _numSerieLmlm;
       private readonly Boolean _ok;
 
-      public Int64 NumSerieLmlm
-      {
-        get
-        {
-          return _numSerieLmlm;
-        }
-        set
-        {
-          _numSerieLmlm = value;
-        }
-      }
+      public Int64 NumSerieLmlm { get; set; }
 
       public Boolean Ok
       {
@@ -36,7 +25,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
 
       public Pk ( )
       {
-        _numSerieLmlm = 0L;
+        NumSerieLmlm = 0L;
         _ok = false;
       }
 
@@ -45,7 +34,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
         if ( numSerieLmlm != Int64.MinValue && numSerieLmlm != 0L )
         {
           _ok = true;
-          _numSerieLmlm = numSerieLmlm;
+          NumSerieLmlm = numSerieLmlm;
         }
       }
 
@@ -53,46 +42,18 @@ namespace DiarioProducao.Classes.LinhaMontagem
 
     public class Ak
     {
-      private String _codEmpresa;
-      private String _codLinhaMontagem;
       private readonly Boolean _ok;
 
-      public String CodEmpresa
-      {
-        get
-        {
-          return _codEmpresa;
-        }
-        set
-        {
-          _codEmpresa = value;
-        }
-      }
+      public String CodEmpresa { get; set; }
 
-      public String CodLinhaMontagem
-      {
-        get
-        {
-          return _codLinhaMontagem;
-        }
-        set
-        {
-          _codLinhaMontagem = value;
-        }
-      }
+      public String CodLinhaMontagem { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok => _ok;
 
       public Ak ( )
       {
-        _codEmpresa = String.Empty;
-        _codLinhaMontagem = String.Empty;
+        CodEmpresa = String.Empty;
+        CodLinhaMontagem = String.Empty;
         _ok = false;
       }
 
@@ -101,8 +62,8 @@ namespace DiarioProducao.Classes.LinhaMontagem
         if ( !String.IsNullOrEmpty ( codEmpresa ) && !String.IsNullOrEmpty ( codLinhaMontagem ) )
         {
           _ok = true;
-          _codEmpresa = codEmpresa;
-          _codLinhaMontagem = codLinhaMontagem;
+          CodEmpresa = codEmpresa;
+          CodLinhaMontagem = codLinhaMontagem;
         }
       }
 
@@ -110,72 +71,12 @@ namespace DiarioProducao.Classes.LinhaMontagem
 
     private readonly Config _bcoSql;
     private readonly String _openQuery;
-    private Boolean         _ok;
-    private Tabela          _linhaMontagem;
-    private Pk              _chavePrimaria;
-    private Ak              _chaveAlternativa;
-    private List<Coluna>    _colunas;
 
-    public Tabela Tabela
-    {
-      get
-      {
-        return _linhaMontagem;
-      }
-      set
-      {
-        _linhaMontagem = value;
-      }
-    }
-
-    public Pk ChavePrimaria
-    {
-      get
-      {
-        return _chavePrimaria;
-      }
-      set
-      {
-        _chavePrimaria = value;
-      }
-    }
-
-    public Ak ChaveAlternativa
-    {
-      get
-      {
-        return _chaveAlternativa;
-      }
-      set
-      {
-        _chaveAlternativa = value;
-      }
-    }
-
-    public Boolean Ok
-    {
-      get
-      {
-        return _ok;
-      }
-      set
-      {
-        _ok = value;
-      }
-    }
-
-    public List<Coluna> Colunas
-    {
-      get
-      {
-        return _colunas;
-      }
-      set
-      {
-        _colunas = value;
-      }
-    }
-
+    public Tabela Tabela { get; set; }
+    public Pk ChavePrimaria { get; set; }
+    public Ak ChaveAlternativa { get; set; }
+    public Boolean Ok { get; set; }
+    public List<Coluna> Colunas { get; set; }
     public Int64 NumSerieLmlm
     {
       get
@@ -231,9 +132,9 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     public Classe ( )
     {
-      _ok = true;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      Ok = true;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       CriaColunas ( );
     }
 
@@ -250,11 +151,11 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     public Classe ( Config bcoSql, String openQuery )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       CriaColunas ( );
     }
 
@@ -274,11 +175,11 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     public Classe ( Config bcoSql, String openQuery, Int64 numSerieLmlm )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( numSerieLmlm );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( numSerieLmlm );
+      ChaveAlternativa = new Ak ( );
       LinhaMontagemComum ( );
     }
 
@@ -298,11 +199,11 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     public Classe ( Config bcoSql, String openQuery, Pk chavePrimaria )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = chavePrimaria;
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = chavePrimaria;
+      ChaveAlternativa = new Ak ( );
       LinhaMontagemComum ( );
     }
 
@@ -327,8 +228,8 @@ namespace DiarioProducao.Classes.LinhaMontagem
     {
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( codEmpresa, codLinhaMontagem );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( codEmpresa, codLinhaMontagem );
       LinhaMontagemComum ( );
     }
 
@@ -350,24 +251,24 @@ namespace DiarioProducao.Classes.LinhaMontagem
     {
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = chaveAlternativa;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = chaveAlternativa;
       LinhaMontagemComum ( );
     }
 
     private void LinhaMontagemComum ( )
     {
-      _ok = false;
+      Ok = false;
       CriaColunas ( );
-      if ( _chavePrimaria.Ok )
+      if ( ChavePrimaria.Ok )
       {
-        Select ( _chavePrimaria );
+        Select ( ChavePrimaria );
       }
       else
       {
-        if ( _chaveAlternativa.Ok )
+        if ( ChaveAlternativa.Ok )
         {
-          Select ( _chaveAlternativa );
+          Select ( ChaveAlternativa );
         }
       }
     }
@@ -377,11 +278,13 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </summary>
     private void CriaColunas ( )
     {
-      _colunas = new List<Coluna> ( );
-      _colunas.Add ( new Coluna ( 0, "serie_linha_montagem", "Série", typeof ( Int64 ), true, false, false ) );
-      _colunas.Add ( new Coluna ( 1, "codigo_empresa", "Empresa", typeof ( String ), false, true, false ) );
-      _colunas.Add ( new Coluna ( 2, "codigo_linha_montagem", "Código", typeof ( String ), false, true, true ) );
-      _colunas.Add ( new Coluna ( 3, "descricao_linha_montagem", "Descrição", typeof ( String ), false, false, true ) );
+      Colunas = new List<Coluna>
+      {
+        new Coluna( 0, "serie_linha_montagem", "Série", typeof( Int64 ), true, false, false ),
+        new Coluna( 1, "codigo_empresa", nameof( Empresa ), typeof( String ), false, true, false ),
+        new Coluna( 2, "codigo_linha_montagem", "Código", typeof( String ), false, true, true ),
+        new Coluna( 3, "descricao_linha_montagem", "Descrição", typeof( String ), false, false, true )
+      };
     }
 
     /// <summary>
@@ -397,7 +300,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     private void SetColumnValue ( String columnName, Object value )
     {
-      _colunas.Find ( item => item.ColumnName == columnName ).Value = value;
+      Colunas.Find ( item => item.ColumnName == columnName ).Value = value;
     }
 
     /// <summary>
@@ -411,7 +314,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </returns>
     private Object GetColumnValue ( String columnName )
     {
-      return _colunas.Find ( item => item.ColumnName == columnName ).Value;
+      return Colunas.Find ( item => item.ColumnName == columnName ).Value;
     }
 
     /// <summary>
@@ -439,8 +342,8 @@ namespace DiarioProducao.Classes.LinhaMontagem
         SetColumnValue ( "codigo_linha_montagem", String.Empty );
         SetColumnValue ( "descricao_linha_montagem", String.Empty );
       }
-      _chavePrimaria = new Pk ( NumSerieLmlm );
-      _chaveAlternativa = new Ak ( CodEmpresa, CodLinhaMontagem );
+      ChavePrimaria = new Pk ( NumSerieLmlm );
+      ChaveAlternativa = new Ak ( CodEmpresa, CodLinhaMontagem );
     }
 
     /// <summary>
@@ -498,7 +401,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
           if ( dR.Read ( ) )
           {
             PopulaRecord ( dR );
-            _ok = true;
+            Ok = true;
           }
           else
           {
@@ -524,13 +427,13 @@ namespace DiarioProducao.Classes.LinhaMontagem
         , DenLinhaMontagem
       );
       var numSerie = 0L;
-      _ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
-      if ( _ok )
+      Ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
+      if ( Ok )
       {
         NumSerieLmlm = numSerie;
-        _chavePrimaria = new Pk ( NumSerieLmlm );
-        _chaveAlternativa = new Ak ( CodEmpresa, CodLinhaMontagem );
-        Select ( _chavePrimaria );
+        ChavePrimaria = new Pk ( NumSerieLmlm );
+        ChaveAlternativa = new Ak ( CodEmpresa, CodLinhaMontagem );
+        Select ( ChavePrimaria );
       }
     }
 
@@ -549,7 +452,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
         , NumSerieLmlm
         , DenLinhaMontagem
       );
-      _ok = Db.Update ( _bcoSql, sql.ToString ( ) );
+      Ok = Db.Update ( _bcoSql, sql.ToString ( ) );
     }
 
     /// <summary>
@@ -557,7 +460,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
     /// </summary>
     public void Delete ( )
     {
-      _ok = false;
+      Ok = false;
       if ( NumSerieLmlm != 0L )
       {
         var sqlDependencia = new StringBuilder ( );
@@ -566,7 +469,7 @@ namespace DiarioProducao.Classes.LinhaMontagem
         var sqlDelete = new StringBuilder ( );
         sqlDelete.Clear ( );
         sqlDelete.AppendFormat ( Sql.DeleteRecord, _openQuery, NumSerieLmlm );
-        _ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
+        Ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
       }
     }
 

@@ -13,7 +13,6 @@ using Lorenzetti.DB;
 
 namespace DiarioProducao
 {
-  using Android;
 
   [
     Activity
@@ -114,7 +113,7 @@ namespace DiarioProducao
 
     private void DefineCampoDenLinha ( )
     {
-      //aqui_txtDenLinha = FindViewById<EditText> ( Resource.Id.txtDenLinha ); // Associa um objeto a um elemento do XML
+      _txtDenLinha = FindViewById<EditText> ( Resource.Id.txtDenLinha ); // Associa um objeto a um elemento do XML
       _txtDenLinha.InputType = InputTypes.Null;                          // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
       _txtDenLinha.Text = _linhaMontagem.DenLinhaMontagem;
     }

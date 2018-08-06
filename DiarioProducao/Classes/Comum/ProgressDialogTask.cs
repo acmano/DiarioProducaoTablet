@@ -10,14 +10,14 @@ namespace DiarioProducao.Classes.Comum
 
     protected override string RunInBackground ( params string [ ] @params )
     {
-      RunInBackgroundMethod ( );
+      RunInBackgroundMethod?.Invoke();
       return "OK";
     }
 
     protected override void OnPostExecute ( string result )
     {
       base.OnPostExecute ( result );
-      OnPostExecuteMethod ( );
+      OnPostExecuteMethod?.Invoke();
     }
 
   }

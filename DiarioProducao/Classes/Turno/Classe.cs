@@ -12,41 +12,22 @@ namespace DiarioProducao.Classes.Turno
 
     public class Pk
     {
-      private Int64 _numSerieLmtrn;
-      private readonly Boolean _ok;
 
-      public Int64 NumSerieLmtrn
-      {
-        get
-        {
-          return _numSerieLmtrn;
-        }
-        set
-        {
-          _numSerieLmtrn = value;
-        }
-      }
-
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Int64 NumSerieLmtrn { get; set; }
+      public Boolean Ok { get; }
 
       public Pk ( )
       {
-        _numSerieLmtrn = 0L;
-        _ok = false;
+        NumSerieLmtrn = 0L;
+        Ok = false;
       }
 
       public Pk ( Int64 numSerieLmtrn )
       {
         if ( numSerieLmtrn != Int64.MinValue && numSerieLmtrn != 0L )
         {
-          _ok = true;
-          _numSerieLmtrn = numSerieLmtrn;
+          Ok = true;
+          NumSerieLmtrn = numSerieLmtrn;
         }
       }
 
@@ -54,62 +35,33 @@ namespace DiarioProducao.Classes.Turno
 
     public class Ak
     {
-      private String _codEmpresa;
-      private String _codTurno;
-      private readonly Boolean _ok;
 
-      public String CodEmpresa
-      {
-        get
-        {
-          return _codEmpresa;
-        }
-        set
-        {
-          _codEmpresa = value;
-        }
-      }
+      public String CodEmpresa { get; set; }
 
-      public string CodTurno
-      {
-        get
-        {
-          return _codTurno;
-        }
-        set
-        {
-          _codTurno = value;
-        }
-      }
+      public string CodTurno { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok { get; }
 
       public Ak ( )
       {
-        _codEmpresa = String.Empty;
-        _codTurno = String.Empty;
-        _ok = false;
+        CodEmpresa = String.Empty;
+        CodTurno = String.Empty;
+        Ok = false;
       }
 
       public Ak ( String codEmpresa, String codTurno )
       {
         if ( !String.IsNullOrEmpty ( codEmpresa ) && !String.IsNullOrEmpty ( codTurno ) )
         {
-          _ok = true;
-          _codEmpresa = codEmpresa;
-          _codTurno = codTurno;
+          Ok = true;
+          CodEmpresa = codEmpresa;
+          CodTurno = codTurno;
         }
         else
         {
-          _ok = false;
-          _codEmpresa = String.Empty;
-          _codTurno = String.Empty;
+          Ok = false;
+          CodEmpresa = String.Empty;
+          CodTurno = String.Empty;
 
         }
       }
@@ -118,74 +70,17 @@ namespace DiarioProducao.Classes.Turno
 
     private readonly Config         _bcoSql;
     private readonly String         _openQuery;
-    private Boolean                 _ok;
-    private Tabela                  _turno;
-    private Empresa.Classe         _empresa;
-    private TurnoTipo.Classe     _turnoTipo;
     private readonly String         _codEmpresa;
-    private Pk                      _chavePrimaria;
-    private Ak                      _chaveAlternativa;
-    private List<Coluna>            _colunas;
 
-    public Tabela Tabela
-    {
-      get
-      {
-        return _turno;
-      }
-      set
-      {
-        _turno = value;
-      }
-    }
+    public Tabela Tabela { get; set; }
 
-    public Pk ChavePrimaria
-    {
-      get
-      {
-        return _chavePrimaria;
-      }
-      set
-      {
-        _chavePrimaria = value;
-      }
-    }
+    public Pk ChavePrimaria { get; set; }
 
-    public Ak ChaveAlternativa
-    {
-      get
-      {
-        return _chaveAlternativa;
-      }
-      set
-      {
-        _chaveAlternativa = value;
-      }
-    }
+    public Ak ChaveAlternativa { get; set; }
 
-    public Boolean Ok
-    {
-      get
-      {
-        return _ok;
-      }
-      set
-      {
-        _ok = value;
-      }
-    }
+    public Boolean Ok { get; set; }
 
-    public List<Coluna> Colunas
-    {
-      get
-      {
-        return _colunas;
-      }
-      set
-      {
-        _colunas = value;
-      }
-    }
+    public List<Coluna> Colunas { get; set; }
 
     public Int64 NumSerieLmtrn
     {
@@ -207,8 +102,8 @@ namespace DiarioProducao.Classes.Turno
       }
       set
       {
-        _empresa = new Empresa.Classe ( _bcoSql, value );
-        SetColumnValue ( "codigo_empresa", _empresa.CodEmpresa );
+        Empresa = new Empresa.Classe ( _bcoSql, value );
+        SetColumnValue ( "codigo_empresa", Empresa.CodEmpresa );
       }
     }
 
@@ -220,8 +115,8 @@ namespace DiarioProducao.Classes.Turno
       }
       set
       {
-        _turnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, value );
-        SetColumnValue ( "codigo_turno_tipo", _turnoTipo.CodTurnoTipo );
+        TurnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, value );
+        SetColumnValue ( "codigo_turno_tipo", TurnoTipo.CodTurnoTipo );
       }
     }
 
@@ -291,35 +186,15 @@ namespace DiarioProducao.Classes.Turno
       {
         return GetColumnValueDateTime ( "data_validade_fim" );
       }
-      set
+      private set
       {
         SetColumnValue ( "data_validade_fim", value );
       }
     }
 
-    public Empresa.Classe Empresa
-    {
-      get
-      {
-        return _empresa;
-      }
-      set
-      {
-        _empresa = value;
-      }
-    }
+    public Empresa.Classe Empresa { get; set; }
 
-    public TurnoTipo.Classe TurnoTipo
-    {
-      get
-      {
-        return _turnoTipo;
-      }
-      set
-      {
-        _turnoTipo = value;
-      }
-    }
+    public TurnoTipo.Classe TurnoTipo { get; set; }
 
     /// <summary>
     /// Cria uma instância vazia do objeto lor_man_turno
@@ -329,8 +204,8 @@ namespace DiarioProducao.Classes.Turno
     public Classe ( )
     {
       CriaColunas ( );
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       TurnoComum ( );
     }
 
@@ -350,8 +225,8 @@ namespace DiarioProducao.Classes.Turno
       _bcoSql = bcoSql;
       _openQuery = openQuery;
       CriaColunas ( );
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       TurnoComum ( );
     }
 
@@ -375,8 +250,8 @@ namespace DiarioProducao.Classes.Turno
       _openQuery = openQuery;
       CriaColunas ( );
       _codEmpresa = codEmpresa;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       TurnoComum ( );
     }
 
@@ -403,8 +278,8 @@ namespace DiarioProducao.Classes.Turno
       _openQuery = openQuery;
       CriaColunas ( );
       _codEmpresa = codEmpresa;
-      _chavePrimaria = new Pk ( numSerieLmtrn );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( numSerieLmtrn );
+      ChaveAlternativa = new Ak ( );
       TurnoComum ( );
     }
 
@@ -431,8 +306,8 @@ namespace DiarioProducao.Classes.Turno
       _openQuery = openQuery;
       CriaColunas ( );
       _codEmpresa = codEmpresa;
-      _chavePrimaria = chavePrimaria;
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = chavePrimaria;
+      ChaveAlternativa = new Ak ( );
       TurnoComum ( );
     }
 
@@ -459,8 +334,8 @@ namespace DiarioProducao.Classes.Turno
       _openQuery = openQuery;
       CriaColunas ( );
       _codEmpresa = codEmpresa;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( codEmpresa, codTurno );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( codEmpresa, codTurno );
       TurnoComum ( );
     }
 
@@ -487,23 +362,23 @@ namespace DiarioProducao.Classes.Turno
       _openQuery = openQuery;
       CriaColunas ( );
       _codEmpresa = codEmpresa;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = chaveAlternativa;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = chaveAlternativa;
       TurnoComum ( );
     }
 
     private void TurnoComum ( )
     {
-      _ok = false;
-      if ( _chavePrimaria.Ok )
+      Ok = false;
+      if ( ChavePrimaria.Ok )
       {
-        Select ( _chavePrimaria );
+        Select ( ChavePrimaria );
       }
       else
       {
-        if ( _chaveAlternativa.Ok )
+        if ( ChaveAlternativa.Ok )
         {
-          Select ( _chaveAlternativa );
+          Select ( ChaveAlternativa );
         }
         else
         {
@@ -511,10 +386,10 @@ namespace DiarioProducao.Classes.Turno
         }
         if ( Ok )
         {
-          _empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
-          if ( _empresa.Ok )
+          Empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
+          if ( Empresa.Ok )
           {
-            _turnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
+            TurnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
           }
         }
       }
@@ -525,16 +400,18 @@ namespace DiarioProducao.Classes.Turno
     /// </summary>
     private void CriaColunas ( )
     {
-      _colunas = new List<Coluna> ( );
-      _colunas.Add ( new Coluna ( 0, "serie_turno", "Série", typeof ( Int64 ), true, false, false ) );
-      _colunas.Add ( new Coluna ( 1, "codigo_empresa", "Empresa", typeof ( String ), false, true, false ) );
-      _colunas.Add ( new Coluna ( 2, "codigo_turno_tipo", "Tipo Turno", typeof ( String ), false, true, true ) );
-      _colunas.Add ( new Coluna ( 3, "codigo_turno", "Turno", typeof ( String ), false, true, true ) );
-      _colunas.Add ( new Coluna ( 4, "descricao_turno", "Descrição", typeof ( String ), false, false, true ) );
-      _colunas.Add ( new Coluna ( 5, "hora_inicio", "Hora inicial", typeof ( String ), false, false, true ) );
-      _colunas.Add ( new Coluna ( 6, "duracao", "Duração", typeof ( Int64 ), false, false, true ) );
-      _colunas.Add ( new Coluna ( 7, "data_validade_inicio", "Validade Inicial", typeof ( DateTime ), false, false, true ) );
-      _colunas.Add ( new Coluna ( 8, "data_validade_fim", "Validade Final", typeof ( DateTime ), false, false, true ) );
+      Colunas = new List<Coluna>
+      {
+        new Coluna( 0, "serie_turno", "Série", typeof( Int64 ), true, false, false ),
+        new Coluna( 1, "codigo_empresa", nameof( Classes.Empresa ), typeof( String ), false, true, false ),
+        new Coluna( 2, "codigo_turno_tipo", "Tipo Turno", typeof( String ), false, true, true ),
+        new Coluna( 3, "codigo_turno", nameof( Turno ), typeof( String ), false, true, true ),
+        new Coluna( 4, "descricao_turno", "Descrição", typeof( String ), false, false, true ),
+        new Coluna( 5, "hora_inicio", "Hora inicial", typeof( String ), false, false, true ),
+        new Coluna( 6, "duracao", "Duração", typeof( Int64 ), false, false, true ),
+        new Coluna( 7, "data_validade_inicio", "Validade Inicial", typeof( DateTime ), false, false, true ),
+        new Coluna( 8, "data_validade_fim", "Validade Final", typeof( DateTime ), false, false, true )
+      };
     }
 
     /// <summary>
@@ -550,7 +427,7 @@ namespace DiarioProducao.Classes.Turno
     /// </returns>
     private void SetColumnValue ( String columnName, Object value )
     {
-      _colunas.Find ( item => item.ColumnName == columnName ).Value = value;
+      Colunas.Find ( item => item.ColumnName == columnName ).Value = value;
     }
 
     /// <summary>
@@ -565,7 +442,7 @@ namespace DiarioProducao.Classes.Turno
     private String GetColumnValueString ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return c.Value.ToString ( );
     }
 
@@ -581,7 +458,7 @@ namespace DiarioProducao.Classes.Turno
     private DateTime GetColumnValueDateTime ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return Convert.ToDateTime ( c.Value );
     }
 
@@ -597,7 +474,7 @@ namespace DiarioProducao.Classes.Turno
     private Int64 GetColumnValueInt64 ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return Convert.ToInt64 ( c.Value );
     }
 
@@ -632,8 +509,8 @@ namespace DiarioProducao.Classes.Turno
         {
           SetColumnValue ( "data_validade_fim", null );
         }
-        _empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
-        _turnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
+        Empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
+        TurnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
       }
       else
       {
@@ -646,11 +523,11 @@ namespace DiarioProducao.Classes.Turno
         SetColumnValue ( "duracao", 0L );
         SetColumnValue ( "data_validade_inicio", DateTime.Today );
         SetColumnValue ( "data_validade_fim", null );
-        _empresa = new Empresa.Classe ( _bcoSql, _openQuery );
-        _turnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery );
+        Empresa = new Empresa.Classe ( _bcoSql, _openQuery );
+        TurnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery );
       }
-      _chavePrimaria = new Pk ( NumSerieLmtrn );
-      _chaveAlternativa = new Ak ( CodEmpresa, CodTurno );
+      ChavePrimaria = new Pk ( NumSerieLmtrn );
+      ChaveAlternativa = new Ak ( CodEmpresa, CodTurno );
     }
 
     /// <summary>
@@ -708,7 +585,7 @@ namespace DiarioProducao.Classes.Turno
           if ( dR.Read ( ) )
           {
             PopulaRecord ( dR );
-            _ok = true;
+            Ok = true;
           }
           else
           {
@@ -723,8 +600,8 @@ namespace DiarioProducao.Classes.Turno
       var retorno = false;
       if ( !String.IsNullOrEmpty ( CodEmpresa ) && !String.IsNullOrWhiteSpace ( CodEmpresa ) )
       {
-        _empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
-        if ( _empresa.Ok )
+        Empresa = new Empresa.Classe ( _bcoSql, _openQuery, CodEmpresa );
+        if ( Empresa.Ok )
         {
           retorno = true;
         }
@@ -737,8 +614,8 @@ namespace DiarioProducao.Classes.Turno
       var retorno = false;
       if ( !String.IsNullOrEmpty ( CodTurnoTipo ) && !String.IsNullOrWhiteSpace ( CodTurnoTipo ) )
       {
-        _turnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
-        if ( _turnoTipo.Ok )
+        TurnoTipo = new TurnoTipo.Classe ( _bcoSql, _openQuery, CodTurnoTipo );
+        if ( TurnoTipo.Ok )
         {
           retorno = true;
         }
@@ -811,13 +688,13 @@ namespace DiarioProducao.Classes.Turno
           , DatValidadeFim == DateTime.MinValue ? "" : DatValidadeFim.ToString ( "MM/dd/yyyy" )
         );
         var numSerie = 0L;
-        _ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
-        if ( _ok )
+        Ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
+        if ( Ok )
         {
           NumSerieLmtrn = numSerie;
-          _chavePrimaria = new Pk ( NumSerieLmtrn );
-          _chaveAlternativa = new Ak ( CodEmpresa, CodTurno );
-          Select ( _chavePrimaria );
+          ChavePrimaria = new Pk ( NumSerieLmtrn );
+          ChaveAlternativa = new Ak ( CodEmpresa, CodTurno );
+          Select ( ChavePrimaria );
         }
       }
     }
@@ -840,7 +717,7 @@ namespace DiarioProducao.Classes.Turno
         , DatValidadeIni == DateTime.MinValue ? "" : DatValidadeIni.ToString ( "MM/dd/yyyy" )
         , DatValidadeFim == DateTime.MinValue ? "" : DatValidadeFim.ToString ( "MM/dd/yyyy" )
       );
-      _ok = Db.Update ( _bcoSql, sql.ToString ( ) );
+      Ok = Db.Update ( _bcoSql, sql.ToString ( ) );
     }
 
     /// <summary>
@@ -848,7 +725,7 @@ namespace DiarioProducao.Classes.Turno
     /// </summary>
     public void Delete ( )
     {
-      _ok = false;
+      Ok = false;
       if ( NumSerieLmtrn != 0L )
       {
         var sqlDependencia = new StringBuilder ( );
@@ -857,7 +734,7 @@ namespace DiarioProducao.Classes.Turno
         var sqlDelete = new StringBuilder ( );
         sqlDelete.Clear ( );
         sqlDelete.AppendFormat ( Sql.DeleteRecord, _openQuery, NumSerieLmtrn );
-        _ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
+        Ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
       }
     }
 

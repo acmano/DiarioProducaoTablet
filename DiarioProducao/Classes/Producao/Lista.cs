@@ -5,7 +5,7 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.Producao
 {
-  
+
   public class ListaProducao
   {
 

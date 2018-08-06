@@ -9,172 +9,65 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.ProducaoItemObservacao
 {
-  using Android;
+
 
   public class Detalhe
   {
 
     public class Colunas
     {
-      private Int64 _serieProducaoItemObservacao;
-      private Int64 _serieProducaoItem;
-      private Int64 _serieFuncionario;
-      private Int64 _matriculaFuncionario;
-      private String _nomeFuncionario;
-      private DateTime _dataObservacao;
-      private String _textoObservacao;
 
-      public Int64 SerieProducaoItemObservacao
-      {
-        get
-        {
-          return _serieProducaoItemObservacao;
-        }
-        set
-        {
-          _serieProducaoItemObservacao = value;
-        }
-      }
-
-      public Int64 SerieProducaoItem
-      {
-        get
-        {
-          return _serieProducaoItem;
-        }
-        set
-        {
-          _serieProducaoItem = value;
-        }
-      }
-
-      public Int64 SerieFuncionario
-      {
-        get
-        {
-          return _serieFuncionario;
-        }
-        set
-        {
-          _serieFuncionario = value;
-        }
-      }
-
-      public Int64 MatriculaFuncionario
-      {
-        get
-        {
-          return _matriculaFuncionario;
-        }
-        set
-        {
-          _matriculaFuncionario = value;
-        }
-      }
-
-      public String NomeFuncionario
-      {
-        get
-        {
-          return _nomeFuncionario;
-        }
-        set
-        {
-          _nomeFuncionario = value;
-        }
-      }
-
-      public DateTime DataObservacao
-      {
-        get
-        {
-          return _dataObservacao;
-        }
-        set
-        {
-          _dataObservacao = value;
-        }
-      }
-
-      public String TextoObservacao
-      {
-        get
-        {
-          return _textoObservacao;
-        }
-        set
-        {
-          _textoObservacao = value;
-        }
-      }
+      public Int64 SerieProducaoItemObservacao { get; set; }
+      public Int64 SerieProducaoItem { get; set; }
+      public Int64 SerieFuncionario { get; set; }
+      public Int64 MatriculaFuncionario { get; set; }
+      public String NomeFuncionario { get; set; }
+      public DateTime DataObservacao { get; set; }
+      public String TextoObservacao { get; set; }
 
       public Colunas ( )
       {
-        _serieProducaoItemObservacao = 0L;
-        _serieProducaoItem = 0L;
-        _serieFuncionario = 0L;
-        _matriculaFuncionario = 0L;
-        _nomeFuncionario = String.Empty;
-        _dataObservacao = DateTime.MinValue;
-        _textoObservacao = String.Empty;
+        SerieProducaoItemObservacao = 0L;
+        SerieProducaoItem = 0L;
+        SerieFuncionario = 0L;
+        MatriculaFuncionario = 0L;
+        NomeFuncionario = String.Empty;
+        DataObservacao = DateTime.MinValue;
+        TextoObservacao = String.Empty;
       }
 
       public Colunas ( Int64 serieProducaoItemObservacao, Int64 serieProducaoItem, Int64 serieFuncionario, Int64 matriculaFuncionario, String nomeFuncionario, DateTime dataObservacao, String textoObservacao )
       {
-        _serieProducaoItemObservacao = serieProducaoItemObservacao;
-        _serieProducaoItem = serieProducaoItem;
-        _serieFuncionario = serieFuncionario;
-        _matriculaFuncionario = matriculaFuncionario;
-        _nomeFuncionario = nomeFuncionario;
-        _dataObservacao = dataObservacao;
-        _textoObservacao = textoObservacao;
+        SerieProducaoItemObservacao = serieProducaoItemObservacao;
+        SerieProducaoItem = serieProducaoItem;
+        SerieFuncionario = serieFuncionario;
+        MatriculaFuncionario = matriculaFuncionario;
+        NomeFuncionario = nomeFuncionario;
+        DataObservacao = dataObservacao;
+        TextoObservacao = textoObservacao;
       }
 
       public Colunas ( SqlDataReader reader )
       {
-        _serieProducaoItemObservacao = Convert.ToInt64 ( reader [ "serie_producao_item_observacao" ] );
-        _serieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
-        _serieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
-        _matriculaFuncionario = Convert.ToInt64 ( reader [ "matricula_funcionario" ] );
-        _nomeFuncionario = reader [ "nome_funcionario" ].ToString() ;
-        _dataObservacao = Convert.ToDateTime ( reader [ "data_observacao" ] );
-        _textoObservacao = reader [ "texto_observacao" ].ToString ( );
+        SerieProducaoItemObservacao = Convert.ToInt64 ( reader [ "serie_producao_item_observacao" ] );
+        SerieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
+        SerieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
+        MatriculaFuncionario = Convert.ToInt64 ( reader [ "matricula_funcionario" ] );
+        NomeFuncionario = reader [ "nome_funcionario" ].ToString() ;
+        DataObservacao = Convert.ToDateTime ( reader [ "data_observacao" ] );
+        TextoObservacao = reader [ "texto_observacao" ].ToString ( );
       }
 
     }
 
-    private Int64 _serieProducaoItem;
-    private Colunas _colunasDetalhe;
-
-    public Int64 SerieProducaoItem
-    {
-      get
-      {
-        return _serieProducaoItem;
-      }
-      set
-      {
-        _serieProducaoItem = value;
-      }
-    }
-
-    public Colunas ColunasDetalhe
-    {
-      get
-      {
-        return _colunasDetalhe;
-      }
-      set
-      {
-        _colunasDetalhe = value;
-      }
-    }
+    public Int64 SerieProducaoItem { get; set; }
+    public Colunas ColunasDetalhe { get; set; }
 
 
     private void DetalheVazio ( )
     {
-      _serieProducaoItem = 0L;
-      _colunasDetalhe = new Colunas ( );
+      SerieProducaoItem = 0L;
+      ColunasDetalhe = new Colunas ( );
     }
 
     public Detalhe ( )
@@ -184,16 +77,16 @@ namespace DiarioProducao.Classes.ProducaoItemObservacao
 
     public Detalhe ( Int64 serieProducaoObservacao, Int64 serieProducaoItem, Int64 serieFuncionario, Int64 matriculaFuncionario, String nomeFuncionario, String textoObservacao, DateTime dataObservacao )
     {
-      _serieProducaoItem = serieProducaoItem;
-      _colunasDetalhe = new Colunas ( serieProducaoObservacao, serieProducaoItem, serieFuncionario, matriculaFuncionario, nomeFuncionario, dataObservacao, textoObservacao );
+      SerieProducaoItem = serieProducaoItem;
+      ColunasDetalhe = new Colunas ( serieProducaoObservacao, serieProducaoItem, serieFuncionario, matriculaFuncionario, nomeFuncionario, dataObservacao, textoObservacao );
     }
 
     public Detalhe ( SqlDataReader reader )
     {
       try
       {
-        _serieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
-        _colunasDetalhe = new Colunas ( reader );
+        SerieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
+        ColunasDetalhe = new Colunas ( reader );
       }
       catch ( Exception )
       {
@@ -264,15 +157,14 @@ namespace DiarioProducao.Classes.ProducaoItemObservacao
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.ItemObservacao, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.itemobservacao, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-        //aquivar textoObservacao = view.FindViewById ( Resource.Id.txtObservacao ) as TextView;
-        //if ( textoObservacao != null )
-        //{
-        //  textoObservacao.SetText ( detalhe.ColunasDetalhe.TextoObservacao.Trim ( ), TextView.BufferType.Normal );
-        //}
+        if (view.FindViewById( Resource.Id.txtObservacao ) is TextView textoObservacao)
+        {
+          textoObservacao.SetText( detalhe.ColunasDetalhe.TextoObservacao.Trim(), TextView.BufferType.Normal );
+        }
       }
       return view;
     }

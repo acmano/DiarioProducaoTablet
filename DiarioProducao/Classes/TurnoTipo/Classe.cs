@@ -11,41 +11,23 @@ namespace DiarioProducao.Classes.TurnoTipo
   {
     public class Pk
     {
-      private Int64 _numSerieLmtrntp;
-      private readonly Boolean _ok;
 
-      public Int64 NumSerieLmtrntp
-      {
-        get
-        {
-          return _numSerieLmtrntp;
-        }
-        set
-        {
-          _numSerieLmtrntp = value;
-        }
-      }
+      public Int64 NumSerieLmtrntp { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok { get; }
 
       public Pk ( )
       {
-        _numSerieLmtrntp = 0L;
-        _ok = false;
+        NumSerieLmtrntp = 0L;
+        Ok = false;
       }
 
       public Pk ( Int64 numSerieLmtrntp )
       {
         if ( numSerieLmtrntp != Int64.MinValue && numSerieLmtrntp != 0L )
         {
-          _ok = true;
-          _numSerieLmtrntp = numSerieLmtrntp;
+          Ok = true;
+          NumSerieLmtrntp = numSerieLmtrntp;
         }
       }
 
@@ -53,20 +35,9 @@ namespace DiarioProducao.Classes.TurnoTipo
 
     public class Ak
     {
-      private String _codTurnoTipo;
       private readonly Boolean _ok;
 
-      public String CodTurnoTipo
-      {
-        get
-        {
-          return _codTurnoTipo;
-        }
-        set
-        {
-          _codTurnoTipo = value;
-        }
-      }
+      public String CodTurnoTipo { get; set; }
 
       public Boolean Ok
       {
@@ -78,7 +49,7 @@ namespace DiarioProducao.Classes.TurnoTipo
 
       public Ak ( )
       {
-        _codTurnoTipo = String.Empty;
+        CodTurnoTipo = String.Empty;
         _ok = false;
       }
 
@@ -87,7 +58,7 @@ namespace DiarioProducao.Classes.TurnoTipo
         if ( !String.IsNullOrEmpty ( codTurnoTipo ) )
         {
           _ok = true;
-          _codTurnoTipo = codTurnoTipo;
+          CodTurnoTipo = codTurnoTipo;
         }
       }
 
@@ -95,71 +66,16 @@ namespace DiarioProducao.Classes.TurnoTipo
 
     private readonly Config  _bcoSql;
     private readonly String _openQuery;
-    private Boolean         _ok;
-    private Tabela          _turnoTipo;
-    private Pk              _chavePrimaria;
-    private Ak              _chaveAlternativa;
-    private List<Coluna>    _colunas;
 
-    public Tabela Tabela
-    {
-      get
-      {
-        return _turnoTipo;
-      }
-      set
-      {
-        _turnoTipo = value;
-      }
-    }
+    public Tabela Tabela { get; set; }
 
-    public Pk ChavePrimaria
-    {
-      get
-      {
-        return _chavePrimaria;
-      }
-      set
-      {
-        _chavePrimaria = value;
-      }
-    }
+    public Pk ChavePrimaria { get; set; }
 
-    public Ak ChaveAlternativa
-    {
-      get
-      {
-        return _chaveAlternativa;
-      }
-      set
-      {
-        _chaveAlternativa = value;
-      }
-    }
+    public Ak ChaveAlternativa { get; set; }
 
-    public Boolean Ok
-    {
-      get
-      {
-        return _ok;
-      }
-      set
-      {
-        _ok = value;
-      }
-    }
+    public Boolean Ok { get; set; }
 
-    public List<Coluna> Colunas
-    {
-      get
-      {
-        return _colunas;
-      }
-      set
-      {
-        _colunas = value;
-      }
-    }
+    public List<Coluna> Colunas { get; set; }
 
     public Int64 NumSerieLmtrntp
     {
@@ -204,9 +120,9 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     public Classe ( )
     {
-      _ok = true;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      Ok = true;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       CriaColunas ( );
     }
 
@@ -223,11 +139,11 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     public Classe ( Config bcoSql, String openQuery )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       CriaColunas ( );
     }
 
@@ -247,11 +163,11 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     public Classe ( Config bcoSql, String openQuery, Int64 numSerieLmtrntp )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( numSerieLmtrntp );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( numSerieLmtrntp );
+      ChaveAlternativa = new Ak ( );
       TurnoTipoComum ( );
     }
 
@@ -271,11 +187,11 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     public Classe ( Config bcoSql, String openQuery, Pk chavePrimaria )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = chavePrimaria;
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = chavePrimaria;
+      ChaveAlternativa = new Ak ( );
       TurnoTipoComum ( );
     }
 
@@ -297,8 +213,8 @@ namespace DiarioProducao.Classes.TurnoTipo
     {
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( codTurnoTipo );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( codTurnoTipo );
       TurnoTipoComum ( );
     }
 
@@ -320,24 +236,24 @@ namespace DiarioProducao.Classes.TurnoTipo
     {
       _bcoSql = bcoSql;
       _openQuery = openQuery;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = chaveAlternativa;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = chaveAlternativa;
       TurnoTipoComum ( );
     }
 
     private void TurnoTipoComum ( )
     {
-      _ok = false;
+      Ok = false;
       CriaColunas ( );
-      if ( _chavePrimaria.Ok )
+      if ( ChavePrimaria.Ok )
       {
-        Select ( _chavePrimaria );
+        Select ( ChavePrimaria );
       }
       else
       {
-        if ( _chaveAlternativa.Ok )
+        if ( ChaveAlternativa.Ok )
         {
-          Select ( _chaveAlternativa );
+          Select ( ChaveAlternativa );
         }
       }
     }
@@ -347,10 +263,12 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </summary>
     private void CriaColunas ( )
     {
-      _colunas = new List<Coluna> ( );
-      _colunas.Add ( new Coluna ( 0, "serie_turno_tipo", "Série", typeof ( Int64 ), true, false, false ) );
-      _colunas.Add ( new Coluna ( 1, "codigo_turno_tipo", "Código", typeof ( String ), false, true, true ) );
-      _colunas.Add ( new Coluna ( 2, "descricao_turno_tipo", "Descrição", typeof ( String ), false, false, true ) );
+      Colunas = new List<Coluna>
+      {
+        new Coluna( 0, "serie_turno_tipo", "Série", typeof( Int64 ), true, false, false ),
+        new Coluna( 1, "codigo_turno_tipo", "Código", typeof( String ), false, true, true ),
+        new Coluna( 2, "descricao_turno_tipo", "Descrição", typeof( String ), false, false, true )
+      };
     }
 
     /// <summary>
@@ -366,7 +284,7 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     private void SetColumnValue ( String columnName, Object value )
     {
-      _colunas.Find ( item => item.ColumnName == columnName ).Value = value;
+      Colunas.Find ( item => item.ColumnName == columnName ).Value = value;
     }
 
     /// <summary>
@@ -380,7 +298,7 @@ namespace DiarioProducao.Classes.TurnoTipo
     /// </returns>
     private Object GetColumnValue ( String columnName )
     {
-      return _colunas.Find ( item => item.ColumnName == columnName ).Value;
+      return Colunas.Find ( item => item.ColumnName == columnName ).Value;
     }
 
     /// <summary>
@@ -406,8 +324,8 @@ namespace DiarioProducao.Classes.TurnoTipo
         SetColumnValue ( "codigo_turno_tipo", String.Empty );
         SetColumnValue ( "descricao_turno_tipo", String.Empty );
       }
-      _chavePrimaria = new Pk ( NumSerieLmtrntp );
-      _chaveAlternativa = new Ak ( CodTurnoTipo );
+      ChavePrimaria = new Pk ( NumSerieLmtrntp );
+      ChaveAlternativa = new Ak ( CodTurnoTipo );
     }
 
     /// <summary>
@@ -465,7 +383,7 @@ namespace DiarioProducao.Classes.TurnoTipo
           if ( dR.Read ( ) )
           {
             PopulaRecord ( dR );
-            _ok = true;
+            Ok = true;
           }
           else
           {

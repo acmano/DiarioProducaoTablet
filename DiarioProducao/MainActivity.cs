@@ -7,21 +7,20 @@ using Android.Widget;
 using Lorenzetti;
 using DiarioProducao.Classes.Producao;
 using DiarioProducao.Classes.Comum;
-using Android.Support.V7.App;
 
 namespace DiarioProducao
 {
-    [
-      Activity
-      (
-        Label = @"Diário de Produção"
-      , Theme = "@style/LorenTheme"
-      , Icon = "@drawable/DiarioProducao"
-      , MainLauncher = true
-      )
-    ]
+  [
+    Activity
+    (
+      Label = @"Diário de Produção"
+    , Theme = "@style/LorenTheme"
+    , Icon = "@drawable/DiarioProducao"
+    , MainLauncher = true
+    )
+  ]
 
-  public class MainActivity : AppCompatActivity
+  public class MainActivity : Activity // AppCompatActivity
   {
     private String _codEmpresa;
     private EditText _datProducao;
@@ -49,7 +48,7 @@ namespace DiarioProducao
     {
       base.OnCreate( savedInstanceState );
       _codEmpresa = "10";
-      SetContentView ( Resource.Layout.producao);
+      SetContentView( Resource.Layout.diario );
       AtualizaVersao();
       InitClasses();
       Campos();
@@ -64,7 +63,7 @@ namespace DiarioProducao
     private void ListaProducaoClick(object sender, AdapterView.ItemClickEventArgs e)
     {
       var linhaSelecionada = _listaProducao.ListaProducaoAdapter.GetItemAtPosition( e.Position );
-      _intentProducao = new Intent( this, typeof ( ActProducao ) );
+      _intentProducao = new Intent( this, typeof( ActProducao ) );
       _intentProducao.AddFlags( ActivityFlags.NewTask );
       _intentProducao.AddFlags( ActivityFlags.NoAnimation );
       SetaParametros( ref _intentProducao, linhaSelecionada );
@@ -73,9 +72,9 @@ namespace DiarioProducao
 
     private void InitClasses()
     {
-      _ambiente = eAmbiente.Desenvolvimento;
+      _ambiente   = eAmbiente.Desenvolvimento;
       _acessoTipo = Classes.Comum.AcessoSql.AcessoTipo.Desenvolvimento;
-      _acessoSql = new Classes.Comum.AcessoSql( _acessoTipo );
+      _acessoSql  = new Classes.Comum.AcessoSql( _acessoTipo );
       _popUpLinha = new Classes.PopUp.Linha.PopUp( this, _acessoSql, _codEmpresa );
       _popUpTurno = new Classes.PopUp.Turno.PopUp( this, _acessoSql, _codEmpresa );
     }
@@ -111,7 +110,7 @@ namespace DiarioProducao
 
     private void DefineCampoDatProducao()
     {
-      _datProducao = FindViewById<EditText> ( Resource.Id.txtData );     // Associa um objeto a um elemento do XML
+      _datProducao = FindViewById<EditText>( Resource.Id.txtData );     // Associa um objeto a um elemento do XML
       _datProducao.InputType = InputTypes.Null;                          // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
       _datProducao.Click += delegate
       {
@@ -121,39 +120,39 @@ namespace DiarioProducao
 
     private void DefineCampoDenLinha()
     {
-      _txtDenLinha = FindViewById<EditText> ( Resource.Id.txtDenLinha ); // Associa um objeto a um elemento do XML
+      _txtDenLinha = FindViewById<EditText>( Resource.Id.txtDenLinha ); // Associa um objeto a um elemento do XML
       _txtDenLinha.InputType = InputTypes.Null;                          // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
       _txtDenLinha.Click += LinhaPopUp;
     }
 
     private void DefineCampoDenTurno()
     {
-      _txtDenTurno = FindViewById<EditText> ( Resource.Id.txtDenTurno ); // Associa um objeto a um elemento do XML
+      _txtDenTurno = FindViewById<EditText>( Resource.Id.txtDenTurno ); // Associa um objeto a um elemento do XML
       _txtDenTurno.InputType = InputTypes.Null;                          // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
       _txtDenTurno.Click += TurnoPopUp;
     }
 
     private void DefineCampoProducoesQtuantidade()
     {
-      _txtProducoesQuantidade = FindViewById<TextView> ( Resource.Id.txtProducoesQuantidade ); // Associa um objeto a um elemento do XML
+      _txtProducoesQuantidade = FindViewById<TextView>( Resource.Id.txtProducoesQuantidade ); // Associa um objeto a um elemento do XML
       _txtProducoesQuantidade.InputType = InputTypes.Null;                          // impedir de usar o teclado mesmo clicando no campo. InputType determina o tipo de teclado a ser utilzado no campo
     }
 
     private void DefineBotaoPesquisar()
     {
-      _btnPesquisar = FindViewById<Button> ( Resource.Id.btnPesquisar ); // Associa um objeto a um elemento do XML
+      _btnPesquisar = FindViewById<Button>( Resource.Id.btnPesquisar ); // Associa um objeto a um elemento do XML
       _btnPesquisar.Click += ThreadingProcessar;
     }
 
     private void DefineBotaoLimpar()
     {
-      _btnLimpar = FindViewById<Button>(Resource.Id.btnLimpar ); // Associa um objeto a um elemento do XML
+      _btnLimpar = FindViewById<Button>( Resource.Id.btnLimpar ); // Associa um objeto a um elemento do XML
       _btnLimpar.Click += LimpaCampos;
     }
 
     private void DefineListaProducoes()
     {
-      _listViewProducoes = FindViewById<ListView> ( Resource.Id.listProducoes ); // Associa um objeto a um elemento do XML
+      _listViewProducoes = FindViewById<ListView>( Resource.Id.listProducoes ); // Associa um objeto a um elemento do XML
       _listViewProducoes.ItemClick += ListaProducaoClick;
     }
 
@@ -205,6 +204,8 @@ namespace DiarioProducao
       {
         case DateDialogId:
           return new DatePickerDialog( this, OnDateSet, _date.Year, _date.Month, _date.Day );
+        default:
+          break;
       }
       return null;
     }

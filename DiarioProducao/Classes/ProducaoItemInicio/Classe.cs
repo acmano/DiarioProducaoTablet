@@ -12,41 +12,23 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
 
     public class Pk
     {
-      private Int64 _numSerieLmpiini;
-      private readonly Boolean _ok;
 
-      public Int64 NumSerieLmpiini
-      {
-        get
-        {
-          return _numSerieLmpiini;
-        }
-        set
-        {
-          _numSerieLmpiini = value;
-        }
-      }
+      public Int64 NumSerieLmpiini { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok { get; }
 
       public Pk ( )
       {
-        _numSerieLmpiini = 0L;
-        _ok = false;
+        NumSerieLmpiini = 0L;
+        Ok = false;
       }
 
       public Pk ( Int64 numSerieLmpiini )
       {
         if ( numSerieLmpiini != Int64.MinValue && numSerieLmpiini != 0L )
         {
-          _ok = true;
-          _numSerieLmpiini = numSerieLmpiini;
+          Ok = true;
+          NumSerieLmpiini = numSerieLmpiini;
         }
       }
 
@@ -54,46 +36,28 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
 
     public class Ak
     {
-      private Int64 _numSerieLmpi;
-      private readonly Boolean _ok;
 
-      public Int64 NumSerieLmpi
-      {
-        get
-        {
-          return _numSerieLmpi;
-        }
-        set
-        {
-          _numSerieLmpi = value;
-        }
-      }
+      public Int64 NumSerieLmpi { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok { get; }
 
       public Ak ( )
       {
-        _numSerieLmpi = 0L;
-        _ok = false;
+        NumSerieLmpi = 0L;
+        Ok = false;
       }
 
       public Ak ( Int64 numSerieLmpi )
       {
         if ( numSerieLmpi != 0L )
         {
-          _ok = true;
-          _numSerieLmpi = numSerieLmpi;
+          Ok = true;
+          NumSerieLmpi = numSerieLmpi;
         }
         else
         {
-          _ok = false;
-          _numSerieLmpi = 0L;
+          Ok = false;
+          NumSerieLmpi = 0L;
 
         }
       }
@@ -102,71 +66,12 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
 
     private readonly Config         _bcoSql;
     private readonly String         _openQuery;
-    private Boolean                 _ok;
-    private Tabela                  _turno;
-    private Pk                      _chavePrimaria;
-    private Ak                      _chaveAlternativa;
-    private List<Coluna>            _colunas;
 
-    public Tabela Tabela
-    {
-      get
-      {
-        return _turno;
-      }
-      set
-      {
-        _turno = value;
-      }
-    }
-
-    public Pk ChavePrimaria
-    {
-      get
-      {
-        return _chavePrimaria;
-      }
-      set
-      {
-        _chavePrimaria = value;
-      }
-    }
-
-    public Ak ChaveAlternativa
-    {
-      get
-      {
-        return _chaveAlternativa;
-      }
-      set
-      {
-        _chaveAlternativa = value;
-      }
-    }
-
-    public Boolean Ok
-    {
-      get
-      {
-        return _ok;
-      }
-      set
-      {
-        _ok = value;
-      }
-    }
-
-    public List<Coluna> Colunas
-    {
-      get
-      {
-        return _colunas;
-      }
-      set
-      {
-        _colunas = value;
-      }
-    }
+    public Tabela Tabela { get; set; }
+    public Pk ChavePrimaria { get; set; }
+    public Ak ChaveAlternativa { get; set; }
+    public Boolean Ok { get; set; }
+    public List<Coluna> Colunas { get; set; }
 
     public Int64 NumSerieLmpiini
     {
@@ -224,8 +129,8 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     public Classe ( )
     {
       CriaColunas ( );
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       ClasseComum ( );
     }
 
@@ -245,8 +150,8 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
       _bcoSql = bcoSql;
       _openQuery = openQuery;
       CriaColunas ( );
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       ClasseComum ( );
     }
 
@@ -269,8 +174,8 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
       _bcoSql = bcoSql;
       _openQuery = openQuery;
       CriaColunas ( );
-      _chavePrimaria = new Pk ( numSerieLmpiini );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( numSerieLmpiini );
+      ChaveAlternativa = new Ak ( );
       ClasseComum ( );
     }
 
@@ -293,8 +198,8 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
       _bcoSql = bcoSql;
       _openQuery = openQuery;
       CriaColunas ( );
-      _chavePrimaria = chavePrimaria;
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = chavePrimaria;
+      ChaveAlternativa = new Ak ( );
       ClasseComum ( );
     }
 
@@ -317,23 +222,23 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
       _bcoSql = bcoSql;
       _openQuery = openQuery;
       CriaColunas ( );
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = chaveAlternativa;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = chaveAlternativa;
       ClasseComum ( );
     }
 
     private void ClasseComum ( )
     {
-      _ok = false;
-      if ( _chavePrimaria.Ok )
+      Ok = false;
+      if ( ChavePrimaria.Ok )
       {
-        Select ( _chavePrimaria );
+        Select ( ChavePrimaria );
       }
       else
       {
-        if ( _chaveAlternativa.Ok )
+        if ( ChaveAlternativa.Ok )
         {
-          Select ( _chaveAlternativa );
+          Select ( ChaveAlternativa );
         }
         else
         {
@@ -347,11 +252,13 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     /// </summary>
     private void CriaColunas ( )
     {
-      _colunas = new List<Coluna> ( );
-      _colunas.Add ( new Coluna ( 0, "serie_producao_item_inicio", "Série", typeof ( Int64 ), true, false, false ) );
-      _colunas.Add ( new Coluna ( 1, "serie_producao_item", "Série Produção Item", typeof ( Int64 ), false, true, false ) );
-      _colunas.Add ( new Coluna ( 2, "hora_inicio", "Hora inicial", typeof ( String ), false, false, true ) );
-      _colunas.Add ( new Coluna ( 3, "quantidade_funcionarios", "Funcionários", typeof ( Int64 ), false, false, true ) );
+      Colunas = new List<Coluna>
+      {
+        new Coluna( 0, "serie_producao_item_inicio", "Série", typeof( Int64 ), true, false, false ),
+        new Coluna( 1, "serie_producao_item", "Série Produção Item", typeof( Int64 ), false, true, false ),
+        new Coluna( 2, "hora_inicio", "Hora inicial", typeof( String ), false, false, true ),
+        new Coluna( 3, "quantidade_funcionarios", "Funcionários", typeof( Int64 ), false, false, true )
+      };
     }
 
     /// <summary>
@@ -367,7 +274,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     /// </returns>
     private void SetColumnValue ( String columnName, Object value )
     {
-      _colunas.Find ( item => item.ColumnName == columnName ).Value = value;
+      Colunas.Find ( item => item.ColumnName == columnName ).Value = value;
     }
 
     /// <summary>
@@ -382,7 +289,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     private String GetColumnValueString ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return c.Value.ToString ( );
     }
 
@@ -398,7 +305,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     private DateTime GetColumnValueDateTime ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return Convert.ToDateTime ( c.Value );
     }
 
@@ -414,7 +321,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     private Int64 GetColumnValueInt64 ( String columnName )
     {
       //  if ( _colunas.Find(x => x.GetId() == columnName) )
-      var c = _colunas.Find ( item => item.ColumnName == columnName );
+      var c = Colunas.Find ( item => item.ColumnName == columnName );
       return Convert.ToInt64 ( c.Value );
     }
 
@@ -444,8 +351,8 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
         SetColumnValue ( "hora_inicio", DateTime.MinValue );
         SetColumnValue ( "quantidade_funcionarios", 0L );
       }
-      _chavePrimaria = new Pk ( NumSerieLmpiini );
-      _chaveAlternativa = new Ak ( NumSerieLmpi );
+      ChavePrimaria = new Pk ( NumSerieLmpiini );
+      ChaveAlternativa = new Ak ( NumSerieLmpi );
     }
 
     /// <summary>
@@ -503,7 +410,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
           if ( dR.Read ( ) )
           {
             PopulaRecord ( dR );
-            _ok = true;
+            Ok = true;
           }
           else
           {
@@ -554,13 +461,13 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
           , QuantidadeFuncionarios
         );
         var numSerie = 0L;
-        _ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
-        if ( _ok )
+        Ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
+        if ( Ok )
         {
           NumSerieLmpiini = numSerie;
-          _chavePrimaria = new Pk ( NumSerieLmpiini );
-          _chaveAlternativa = new Ak ( NumSerieLmpi );
-          Select ( _chavePrimaria );
+          ChavePrimaria = new Pk ( NumSerieLmpiini );
+          ChaveAlternativa = new Ak ( NumSerieLmpi );
+          Select ( ChavePrimaria );
         }
       }
     }
@@ -581,7 +488,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
         , HoraInicio
         , QuantidadeFuncionarios
       );
-      _ok = Db.Update ( _bcoSql, sql.ToString ( ) );
+      Ok = Db.Update ( _bcoSql, sql.ToString ( ) );
     }
 
     /// <summary>
@@ -589,7 +496,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
     /// </summary>
     public void Delete ( )
     {
-      _ok = false;
+      Ok = false;
       if ( NumSerieLmpiini != 0L )
       {
         var sqlDependencia = new StringBuilder ( );
@@ -598,7 +505,7 @@ namespace DiarioProducao.Classes.ProducaoItemInicio
         var sqlDelete = new StringBuilder ( );
         sqlDelete.Clear ( );
         sqlDelete.AppendFormat ( Sql.DeleteRecord, _openQuery, NumSerieLmpiini );
-        _ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
+        Ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
       }
     }
 

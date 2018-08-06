@@ -375,7 +375,6 @@
         -->
         <View
           android:id="@+id/separador2"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"
@@ -402,7 +401,6 @@
         -->
         <View
           android:id="@+id/separador3"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"
@@ -461,7 +459,6 @@
         -->
         <View
           android:id="@+id/separador5"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"
@@ -514,7 +511,6 @@
         -->
         <View
           android:id="@+id/separador6"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"
@@ -573,7 +569,6 @@
         -->
         <View
           android:id="@+id/separador8"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"
@@ -614,7 +609,6 @@
         -->
         <View
           android:id="@+id/separador9"
-          android:layout_below="@id/filtros"
           android:layout_height="2dp"
           android:layout_width="fill_parent"
           android:background="#000000"

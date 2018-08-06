@@ -9,148 +9,77 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.ProducaoItem
 {
-  using Android;
+
 
   public class Detalhe
   {
 
     public class Colunas
     {
-      private Int64 _serieProducaoItem;
-      private Int64 _serieProducao;
-      private Int64 _serieItemEmpresa;
-      private String _codigoItem;
-      private String _descricaoItem;
-      private DateTime _horaInicio;
-      private DateTime _horaFim;
-      private Int64 _quantidadeInformada;
 
-      public Int64 SerieProducaoItem
-      {
-        get { return _serieProducaoItem; }
-        set { _serieProducaoItem = value; }
-      }
+      public Int64 SerieProducaoItem { get; set; }
+      public Int64 SerieProducao { get; set; }
+      public Int64 SerieItemEmpresa { get; set; }
+      public String CodigoItem { get; set; }
+      public String DescricaoItem { get; set; }
+      public DateTime HoraInicio { get; set; }
+      public DateTime HoraFim { get; set; }
+      public Int64 QuantidadeInformada { get; set; }
 
-      public Int64 SerieProducao
-      {
-        get { return _serieProducao; }
-        set { _serieProducao = value; }
-      }
 
-      public Int64 SerieItemEmpresa
-      {
-        get { return _serieItemEmpresa; }
-        set { _serieItemEmpresa = value; }
-      }
-
-      public String CodigoItem
-      {
-        get { return _codigoItem; }
-        set { _codigoItem = value; }
-      }
-
-      public String DescricaoItem
-      {
-        get { return _descricaoItem; }
-        set { _descricaoItem = value; }
-      }
-
-      public DateTime HoraInicio
-      {
-        get { return _horaInicio; }
-        set { _horaInicio = value; }
-      }
-
-      public DateTime HoraFim
-      {
-        get { return _horaFim; }
-        set { _horaFim = value; }
-      }
-
-      public Int64 QuantidadeInformada
-      {
-        get { return _quantidadeInformada; }
-        set { _quantidadeInformada = value; }
-      }
-      
-    
       public Colunas ( )
       {
-        _serieProducaoItem = 0L;
-        _serieProducao = 0L;
-        _serieItemEmpresa = 0L;
-        _codigoItem = String.Empty;
-        _descricaoItem = String.Empty;
-        _horaInicio = DateTime.MinValue;
-        _horaFim = DateTime.MinValue;
-        _quantidadeInformada = 0L;
+        SerieProducaoItem = 0L;
+        SerieProducao = 0L;
+        SerieItemEmpresa = 0L;
+        CodigoItem = String.Empty;
+        DescricaoItem = String.Empty;
+        HoraInicio = DateTime.MinValue;
+        HoraFim = DateTime.MinValue;
+        QuantidadeInformada = 0L;
       }
 
       public Colunas ( Int64 serieProducaoItem, Int64 serieProducao, Int64 serieItemEmpresa, String codigoItem, String descricaoItem, DateTime horaInicio, DateTime horaFim, Int64 quantidadeInformada )
       {
-        _serieProducaoItem = serieProducaoItem;
-        _serieProducao = serieProducao;
-        _serieItemEmpresa = serieItemEmpresa;
-        _codigoItem = codigoItem;
-        _descricaoItem = descricaoItem;
-        _horaInicio = horaInicio;
-        _horaFim = horaFim;
-        _quantidadeInformada = quantidadeInformada;
+        SerieProducaoItem = serieProducaoItem;
+        SerieProducao = serieProducao;
+        SerieItemEmpresa = serieItemEmpresa;
+        CodigoItem = codigoItem;
+        DescricaoItem = descricaoItem;
+        HoraInicio = horaInicio;
+        HoraFim = horaFim;
+        QuantidadeInformada = quantidadeInformada;
       }
 
       public Colunas ( SqlDataReader reader )
       {
-        _serieProducaoItem = Convert.ToInt64( reader [ "serie_producao_item" ] );
-        _serieProducao = Convert.ToInt64 ( reader [ "serie_producao" ] );
-        _serieItemEmpresa = Convert.ToInt64  ( reader [ "serie_item_empresa" ] );
-        _codigoItem = reader["codigo_item"].ToString();
-        _descricaoItem = reader["descricao_item"].ToString();
+        SerieProducaoItem = Convert.ToInt64( reader [ "serie_producao_item" ] );
+        SerieProducao = Convert.ToInt64 ( reader [ "serie_producao" ] );
+        SerieItemEmpresa = Convert.ToInt64  ( reader [ "serie_item_empresa" ] );
+        CodigoItem = reader["codigo_item"].ToString();
+        DescricaoItem = reader["descricao_item"].ToString();
         try
         {
-          _horaInicio = Convert.ToDateTime(reader["hora_inicio"]);
+          HoraInicio = Convert.ToDateTime(reader["hora_inicio"]);
         }
-        catch (Exception e)
+        catch (Exception )
         {
-          _horaInicio = DateTime.MinValue;
+          HoraInicio = DateTime.MinValue;
         }
-        _horaFim = Convert.ToDateTime(reader["hora_fim"]);
-        _quantidadeInformada = Convert.ToInt64(reader["quantidade_informada"]);
+        HoraFim = Convert.ToDateTime(reader["hora_fim"]);
+        QuantidadeInformada = Convert.ToInt64(reader["quantidade_informada"]);
       }
 
     }
 
-    private Int64 _serieProducao;
-    private Colunas _colunasDetalhe;
-
-    public Int64 SerieProducao
-    {
-      get
-      {
-        return _serieProducao;
-      }
-      set
-      {
-        _serieProducao = value;
-      }
-    }
-
-    public Colunas ColunasDetalhe
-    {
-      get
-      {
-        return _colunasDetalhe;
-      }
-      set
-      {
-        _colunasDetalhe = value;
-      }
-    }
+    public Int64 SerieProducao { get; set; }
+    public Colunas ColunasDetalhe { get; set; }
 
 
     private void DetalheVazio ( )
     {
-      _serieProducao = 0L;
-      _colunasDetalhe = new Colunas();
+      SerieProducao = 0L;
+      ColunasDetalhe = new Colunas();
     }
 
     public Detalhe ( )
@@ -160,18 +89,18 @@ namespace DiarioProducao.Classes.ProducaoItem
 
     public Detalhe ( Int64 serieProducaoItem, Int64 serieProducao, Int64 serieItemEmpresa, String codigoItem, String descricaoItem, DateTime horaInicio, DateTime horaFim, Int64 quantidadeInformada )
     {
-      _serieProducao = serieProducao;
-      _colunasDetalhe = new Colunas ( serieProducaoItem, serieProducao, serieItemEmpresa, codigoItem, descricaoItem, horaInicio, horaFim, quantidadeInformada );
+      SerieProducao = serieProducao;
+      ColunasDetalhe = new Colunas ( serieProducaoItem, serieProducao, serieItemEmpresa, codigoItem, descricaoItem, horaInicio, horaFim, quantidadeInformada );
     }
 
     public Detalhe ( SqlDataReader reader )
     {
       try
       {
-        _serieProducao = Convert.ToInt64 ( ( reader [ "serie_producao" ] ) );
-        _colunasDetalhe = new Colunas ( reader );
+        SerieProducao = Convert.ToInt64 ( ( reader [ "serie_producao" ] ) );
+        ColunasDetalhe = new Colunas ( reader );
       }
-      catch ( Exception e )
+      catch ( Exception  )
       {
         DetalheVazio ( );
       }
@@ -231,37 +160,30 @@ namespace DiarioProducao.Classes.ProducaoItem
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.ProducaoItem, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.producaoitem, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-/*aqui
-        var codigoItem = view.FindViewById ( Resource.Id.txtCodigoItem ) as TextView;
-        var descricaoItem = view.FindViewById ( Resource.Id.txtDescricaoItem ) as TextView;
-        var horaInicio = view.FindViewById ( Resource.Id.txtHoraInicio ) as TextView;
-        var horaFim = view.FindViewById ( Resource.Id.txtHoraFim ) as TextView;
-        var quantidadeInformada = view.FindViewById ( Resource.Id.txtQuantidadeInformada ) as TextView;
-        if ( codigoItem != null )
+        if (view.FindViewById( Resource.Id.txtCodigoItem ) is TextView codigoItem)
         {
-          codigoItem.SetText ( detalhe.ColunasDetalhe.CodigoItem.Trim ( ), TextView.BufferType.Normal );
+          codigoItem.SetText( detalhe.ColunasDetalhe.CodigoItem.Trim(), TextView.BufferType.Normal );
         }
-        if ( descricaoItem != null )
+        if (view.FindViewById( Resource.Id.txtDescricaoItem ) is TextView descricaoItem)
         {
-          descricaoItem.SetText ( detalhe.ColunasDetalhe.DescricaoItem.Trim ( ), TextView.BufferType.Normal );
+          descricaoItem.SetText( detalhe.ColunasDetalhe.DescricaoItem.Trim(), TextView.BufferType.Normal );
         }
-        if ( horaInicio != null )
+        if (view.FindViewById( Resource.Id.txtHoraInicio ) is TextView horaInicio)
         {
-          horaInicio.SetText ( detalhe.ColunasDetalhe.HoraInicio.ToString("t").Trim ( ), TextView.BufferType.Normal );
+          horaInicio.SetText( detalhe.ColunasDetalhe.HoraInicio.ToString( "t" ).Trim(), TextView.BufferType.Normal );
         }
-        if ( horaFim != null )
+        if (view.FindViewById( Resource.Id.txtHoraFim ) is TextView horaFim)
         {
-          horaFim.SetText ( detalhe.ColunasDetalhe.HoraFim.ToString ( "t" ).Trim ( ), TextView.BufferType.Normal );
+          horaFim.SetText( detalhe.ColunasDetalhe.HoraFim.ToString( "t" ).Trim(), TextView.BufferType.Normal );
         }
-        if ( quantidadeInformada != null )
+        if (view.FindViewById( Resource.Id.txtQuantidadeInformada ) is TextView quantidadeInformada)
         {
-          quantidadeInformada.SetText ( detalhe.ColunasDetalhe.QuantidadeInformada.ToString ( ).Trim ( ), TextView.BufferType.Normal );
+          quantidadeInformada.SetText( detalhe.ColunasDetalhe.QuantidadeInformada.ToString().Trim(), TextView.BufferType.Normal );
         }
-      */
       }
       return view;
     }

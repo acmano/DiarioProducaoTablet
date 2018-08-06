@@ -9,140 +9,58 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.ProducaoObservacao
 {
-  using Android;
+
 
   public class Detalhe
   {
 
     public class Colunas
     {
-      private Int64 _serieProducaoObservacao;
-      private Int64 _serieProducao;
-      private Int64 _serieFuncionario;
-      private DateTime _dataObservacao;
-      private String _textoObservacao;
 
-      public Int64 SerieProducaoObservacao
-      {
-        get
-        {
-          return _serieProducaoObservacao;
-        }
-        set
-        {
-          _serieProducaoObservacao = value;
-        }
-      }
-
-      public Int64 SerieProducao
-      {
-        get
-        {
-          return _serieProducao;
-        }
-        set
-        {
-          _serieProducao = value;
-        }
-      }
-
-      public Int64 SerieFuncionario
-      {
-        get
-        {
-          return _serieFuncionario;
-        }
-        set
-        {
-          _serieFuncionario = value;
-        }
-      }
-
-      public DateTime DataObservacao
-      {
-        get
-        {
-          return _dataObservacao;
-        }
-        set
-        {
-          _dataObservacao = value;
-        }
-      }
-
-      public String TextoObservacao
-      {
-        get
-        {
-          return _textoObservacao;
-        }
-        set
-        {
-          _textoObservacao = value;
-        }
-      }
+      public Int64 SerieProducaoObservacao { get; set; }
+      public Int64 SerieProducao { get; set; }
+      public Int64 SerieFuncionario { get; set; }
+      public DateTime DataObservacao { get; set; }
+      public String TextoObservacao { get; set; }
 
       public Colunas ( )
       {
-        _serieProducaoObservacao = 0L;
-        _serieProducao = 0L;
-        _serieFuncionario = 0L;
-        _dataObservacao = DateTime.MinValue;
-        _textoObservacao = String.Empty;
+        SerieProducaoObservacao = 0L;
+        SerieProducao = 0L;
+        SerieFuncionario = 0L;
+        DataObservacao = DateTime.MinValue;
+        TextoObservacao = String.Empty;
       }
 
       public Colunas ( Int64 serieProducaoObservacao, Int64 serieProducao, Int64 serieFuncionario, DateTime dataObservacao, String textoObservacao )
       {
-        _serieProducaoObservacao = serieProducaoObservacao;
-        _serieProducao = serieProducao;
-        _serieFuncionario = serieFuncionario;
-        _dataObservacao = dataObservacao;
-        _textoObservacao = textoObservacao;
+        SerieProducaoObservacao = serieProducaoObservacao;
+        SerieProducao = serieProducao;
+        SerieFuncionario = serieFuncionario;
+        DataObservacao = dataObservacao;
+        TextoObservacao = textoObservacao;
       }
 
       public Colunas ( SqlDataReader reader )
       {
-        _serieProducaoObservacao = Convert.ToInt64 ( reader [ "serie_producao_observacao" ] );
-        _serieProducao = Convert.ToInt64 ( reader [ "serie_producao" ] );
-        _serieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
-        _dataObservacao = Convert.ToDateTime ( reader [ "data_observacao" ] );
-        _textoObservacao = reader [ "texto_observacao" ].ToString ( );
+        SerieProducaoObservacao = Convert.ToInt64 ( reader [ "serie_producao_observacao" ] );
+        SerieProducao = Convert.ToInt64 ( reader [ "serie_producao" ] );
+        SerieFuncionario = Convert.ToInt64 ( reader [ "serie_funcionario" ] );
+        DataObservacao = Convert.ToDateTime ( reader [ "data_observacao" ] );
+        TextoObservacao = reader [ "texto_observacao" ].ToString ( );
       }
 
     }
 
-    private Int64 _serieProducao;
-    private Colunas _colunasDetalhe;
+    public Int64 SerieProducao { get; set; }
 
-    public Int64 SerieProducao
-    {
-      get
-      {
-        return _serieProducao;
-      }
-      set
-      {
-        _serieProducao = value;
-      }
-    }
-
-    public Colunas ColunasDetalhe
-    {
-      get
-      {
-        return _colunasDetalhe;
-      }
-      set
-      {
-        _colunasDetalhe = value;
-      }
-    }
+    public Colunas ColunasDetalhe { get; set; }
 
 
     private void DetalheVazio ( )
     {
-      _serieProducao = 0L;
-      _colunasDetalhe = new Colunas ( );
+      SerieProducao = 0L;
+      ColunasDetalhe = new Colunas ( );
     }
 
     public Detalhe ( )
@@ -152,16 +70,16 @@ namespace DiarioProducao.Classes.ProducaoObservacao
 
     public Detalhe ( Int64 serieProducaoObservacao, Int64 serieProducao, Int64 serieFuncionario, String textoObservacao, DateTime dataObservacao )
     {
-      _serieProducao = serieProducao;
-      _colunasDetalhe = new Colunas ( serieProducaoObservacao, serieProducao, serieFuncionario, dataObservacao, textoObservacao );
+      SerieProducao = serieProducao;
+      ColunasDetalhe = new Colunas ( serieProducaoObservacao, serieProducao, serieFuncionario, dataObservacao, textoObservacao );
     }
 
     public Detalhe ( SqlDataReader reader )
     {
       try
       {
-        _serieProducao = Convert.ToInt64 ( ( reader [ "serie_producao" ] ) );
-        _colunasDetalhe = new Colunas ( reader );
+        SerieProducao = Convert.ToInt64 ( ( reader [ "serie_producao" ] ) );
+        ColunasDetalhe = new Colunas ( reader );
       }
       catch ( Exception )
       {
@@ -229,16 +147,14 @@ namespace DiarioProducao.Classes.ProducaoObservacao
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.ProducaoObservacao, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.producaoobservacao, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-        //aqui
-        //var textoObservacao = view.FindViewById ( Resource.Id.txtObservacao ) as TextView;
-        //if ( textoObservacao != null )
-        //{
-        //  textoObservacao.SetText ( detalhe.ColunasDetalhe.TextoObservacao.Trim ( ), TextView.BufferType.Normal );
-        //}
+        if (view.FindViewById( Resource.Id.txtObservacao ) is TextView textoObservacao)
+        {
+          textoObservacao.SetText( detalhe.ColunasDetalhe.TextoObservacao.Trim(), TextView.BufferType.Normal );
+        }
       }
       return view;
     }

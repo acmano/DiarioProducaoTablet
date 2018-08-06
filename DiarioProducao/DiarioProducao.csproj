@@ -34,6 +34,9 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -147,9 +150,9 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
+    <Content Include="Resources\layout\activity_main.axml">
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </Content>
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
@@ -173,12 +176,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\diario.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidResource Include="Resources\layout\diario.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\diarioproducao.axml" />
@@ -199,9 +197,7 @@
     <AndroidResource Include="Resources\layout\popup.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\popupdetalhe.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidResource Include="Resources\layout\popupdetalhe.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\producao.axml" />
@@ -534,7 +530,11 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Classes\Empresa\Sql.resx" />
     <EmbeddedResource Include="Classes\Funcionario\Sql.resx" />

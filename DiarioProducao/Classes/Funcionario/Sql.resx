@@ -195,7 +195,7 @@
     {0}
   , '
       SELECT  lor_man_funcionario.num_serie_lmf             AS serie_funcionario
-           ,  lor_man_funcionario.num_matricula )           AS matricula_funcionario
+           ,  lor_man_funcionario.num_matricula             AS matricula_funcionario
            ,  TRIM ( lor_man_funcionario.nom_funcionario )  AS nome_funcionario
         FROM  lor_man_funcionario
         WHERE lor_man_funcionario.num_matricula = {1}
@@ -211,7 +211,7 @@
     {0}
   , '
       SELECT  lor_man_funcionario.num_serie_lmf             AS serie_funcionario
-           ,  lor_man_funcionario.num_matricula )           AS matricula_funcionario
+           ,  lor_man_funcionario.num_matricula             AS matricula_funcionario
            ,  TRIM ( lor_man_funcionario.nom_funcionario )  AS nome_funcionario
         FROM  lor_man_funcionario
         WHERE 1=1
@@ -230,10 +230,10 @@
     {0}
   , '
       SELECT  lor_man_funcionario.num_serie_lmf             AS serie_funcionario
-           ,  lor_man_funcionario.num_matricula )           AS matricula_funcionario
+           ,  lor_man_funcionario.num_matricula             AS matricula_funcionario
            ,  TRIM ( lor_man_funcionario.nom_funcionario )  AS nome_funcionario
         FROM  lor_man_funcionario
-        WHERE lor_man_funcionario.num_serie_lmf = {1}
+		WHERE lor_man_funcionario.num_serie_lmf = {1}
   '
   ) AS tabela</value>
     <comment>Comando para obter todos os campos do registro através de sua PK.</comment>

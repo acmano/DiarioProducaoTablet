@@ -8,7 +8,7 @@ namespace DiarioProducao.Classes.ProducaoItem
 
   public class ListaProducaoItem
   {
-  
+
     public AdapterProducaoItem ListaProducaoItemAdapter;
 
     public ListaProducaoItem(Activity activityMestre, AcessoSql acessoSql, Int64 numSerieLmp)

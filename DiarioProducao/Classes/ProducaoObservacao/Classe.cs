@@ -11,32 +11,15 @@ namespace DiarioProducao.Classes.ProducaoObservacao
   {
     public class Pk
     {
-      private Int64 _numSerieLmpobs;
       private readonly Boolean _ok;
 
-      public Int64 NumSerieLmpobs
-      {
-        get
-        {
-          return _numSerieLmpobs;
-        }
-        set
-        {
-          _numSerieLmpobs = value;
-        }
-      }
+      public Int64 NumSerieLmpobs { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok => _ok;
 
       public Pk ( )
       {
-        _numSerieLmpobs = 0L;
+        NumSerieLmpobs = 0L;
         _ok = false;
       }
 
@@ -45,7 +28,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
         if ( numSerieLmpobs != Int64.MinValue && numSerieLmpobs != 0L )
         {
           _ok = true;
-          _numSerieLmpobs = numSerieLmpobs;
+          NumSerieLmpobs = numSerieLmpobs;
         }
       }
 
@@ -53,56 +36,27 @@ namespace DiarioProducao.Classes.ProducaoObservacao
 
     public class Ak
     {
-      private Int64 _numSerieLmp;
-      private DateTime _datObservacao;
-      private readonly Boolean _ok;
 
-      public Int64 NumSerieLmp
-      {
-        get
-        {
-          return _numSerieLmp;
-        }
-        set
-        {
-          _numSerieLmp = value;
-        }
-      }
+      public Int64 NumSerieLmp { get; set; }
 
-      public DateTime DatObservacao
-      {
-        get
-        {
-          return _datObservacao;
-        }
-        set
-        {
-          _datObservacao = value;
-        }
-      }
+      public DateTime DatObservacao { get; set; }
 
-      public Boolean Ok
-      {
-        get
-        {
-          return _ok;
-        }
-      }
+      public Boolean Ok { get; }
 
       public Ak ( )
       {
-        _numSerieLmp = 0L;
-        _datObservacao = DateTime.MinValue;
-        _ok = false;
+        NumSerieLmp = 0L;
+        DatObservacao = DateTime.MinValue;
+        Ok = false;
       }
 
       public Ak ( Int64 numSerieLmp, DateTime datObservacao )
       {
         if ( numSerieLmp != 0L && datObservacao != DateTime.MinValue )
         {
-          _ok = true;
-          _numSerieLmp = numSerieLmp;
-          _datObservacao = datObservacao;
+          Ok = true;
+          NumSerieLmp = numSerieLmp;
+          DatObservacao = datObservacao;
         }
       }
 
@@ -110,71 +64,12 @@ namespace DiarioProducao.Classes.ProducaoObservacao
 
     private readonly Config    _bcoSql;
     private readonly AcessoSql _acessoSql;
-    private Boolean            _ok;
-    private Tabela             _producaoObservacao;
-    private Pk                 _chavePrimaria;
-    private Ak                 _chaveAlternativa;
-    private List<Coluna>       _colunas;
 
-    public Tabela Tabela
-    {
-      get
-      {
-        return _producaoObservacao;
-      }
-      set
-      {
-        _producaoObservacao = value;
-      }
-    }
-
-    public Pk ChavePrimaria
-    {
-      get
-      {
-        return _chavePrimaria;
-      }
-      set
-      {
-        _chavePrimaria = value;
-      }
-    }
-
-    public Ak ChaveAlternativa
-    {
-      get
-      {
-        return _chaveAlternativa;
-      }
-      set
-      {
-        _chaveAlternativa = value;
-      }
-    }
-
-    public Boolean Ok
-    {
-      get
-      {
-        return _ok;
-      }
-      set
-      {
-        _ok = value;
-      }
-    }
-
-    public List<Coluna> Colunas
-    {
-      get
-      {
-        return _colunas;
-      }
-      set
-      {
-        _colunas = value;
-      }
-    }
+    public Tabela Tabela { get; set; }
+    public Pk ChavePrimaria { get; set; }
+    public Ak ChaveAlternativa { get; set; }
+    public Boolean Ok { get; set; }
+    public List<Coluna> Colunas { get; set; }
 
     public Int64 NumSerieLmpobs
     {
@@ -233,11 +128,11 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     public Classe ( )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = null;
       _acessoSql = null;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       ProducaoObservacaoComum ( );
     }
 
@@ -254,11 +149,11 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     public Classe ( Config bcoSql, AcessoSql acessoSql )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _acessoSql = acessoSql;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( );
       ProducaoObservacaoComum ( );
     }
 
@@ -278,11 +173,11 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     public Classe ( Config bcoSql, AcessoSql acessoSql, Int64 numSerieLmpobs )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _acessoSql = acessoSql;
-      _chavePrimaria = new Pk ( numSerieLmpobs );
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = new Pk ( numSerieLmpobs );
+      ChaveAlternativa = new Ak ( );
       ProducaoObservacaoComum ( );
     }
 
@@ -302,11 +197,11 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     public Classe ( Config bcoSql, AcessoSql acessoSql, Pk chavePrimaria )
     {
-      _ok = true;
+      Ok = true;
       _bcoSql = bcoSql;
       _acessoSql = acessoSql;
-      _chavePrimaria = chavePrimaria;
-      _chaveAlternativa = new Ak ( );
+      ChavePrimaria = chavePrimaria;
+      ChaveAlternativa = new Ak ( );
       ProducaoObservacaoComum ( );
     }
 
@@ -331,8 +226,8 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     {
       _bcoSql = bcoSql;
       _acessoSql = acessoSql;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = new Ak ( numSerieLmp, datObservacao );
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = new Ak ( numSerieLmp, datObservacao );
       ProducaoObservacaoComum ( );
     }
 
@@ -354,24 +249,24 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     {
       _bcoSql = bcoSql;
       _acessoSql = acessoSql;
-      _chavePrimaria = new Pk ( );
-      _chaveAlternativa = chaveAlternativa;
+      ChavePrimaria = new Pk ( );
+      ChaveAlternativa = chaveAlternativa;
       ProducaoObservacaoComum ( );
     }
 
     private void ProducaoObservacaoComum ( )
     {
-      _ok = false;
+      Ok = false;
       CriaColunas ( );
-      if ( _chavePrimaria.Ok )
+      if ( ChavePrimaria.Ok )
       {
-        Select ( _chavePrimaria );
+        Select ( ChavePrimaria );
       }
       else
       {
-        if ( _chaveAlternativa.Ok )
+        if ( ChaveAlternativa.Ok )
         {
-          Select ( _chaveAlternativa );
+          Select ( ChaveAlternativa );
         }
       }
     }
@@ -381,12 +276,14 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </summary>
     private void CriaColunas ( )
     {
-      _colunas = new List<Coluna> ( );
-      _colunas.Add ( new Coluna ( 0, "serie_producao_observacao", "Série", typeof ( Int64 ), true, false, false ) );
-      _colunas.Add ( new Coluna ( 1, "serie_producao", "Série Produção", typeof ( Int64 ), false, true, false ) );
-      _colunas.Add ( new Coluna ( 2, "serie_funcionario", "Série Funcionário", typeof ( Int64 ), false, false, false ) );
-      _colunas.Add ( new Coluna ( 3, "data_observacao", "Data", typeof ( DateTime ), false, true, false ) );
-      _colunas.Add ( new Coluna ( 4, "texto_observacao", "Observacão", typeof ( String ), false, false, false ) );
+      Colunas = new List<Coluna>
+      {
+        new Coluna( 0, "serie_producao_observacao", "Série", typeof( Int64 ), true, false, false ),
+        new Coluna( 1, "serie_producao", "Série Produção", typeof( Int64 ), false, true, false ),
+        new Coluna( 2, "serie_funcionario", "Série Funcionário", typeof( Int64 ), false, false, false ),
+        new Coluna( 3, "data_observacao", "Data", typeof( DateTime ), false, true, false ),
+        new Coluna( 4, "texto_observacao", "Observacão", typeof( String ), false, false, false )
+      };
     }
 
     /// <summary>
@@ -402,7 +299,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     private void SetColumnValue ( String columnName, Object value )
     {
-      _colunas.Find ( item => item.ColumnName == columnName ).Value = value;
+      Colunas.Find ( item => item.ColumnName == columnName ).Value = value;
     }
 
     /// <summary>
@@ -416,7 +313,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </returns>
     private Object GetColumnValue ( String columnName )
     {
-      return _colunas.Find ( item => item.ColumnName == columnName ).Value;
+      return Colunas.Find ( item => item.ColumnName == columnName ).Value;
     }
 
     /// <summary>
@@ -446,8 +343,8 @@ namespace DiarioProducao.Classes.ProducaoObservacao
         SetColumnValue ( "data_observacao", DateTime.MinValue );
         SetColumnValue ( "texto_observacao", String.Empty );
       }
-      _chavePrimaria = new Pk ( NumSerieLmpobs );
-      _chaveAlternativa = new Ak ( NumSerieLmp, DatObservacao );
+      ChavePrimaria = new Pk ( NumSerieLmpobs );
+      ChaveAlternativa = new Ak ( NumSerieLmp, DatObservacao );
     }
 
     /// <summary>
@@ -511,7 +408,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
           if ( dR.Read ( ) )
           {
             PopulaRecord ( dR );
-            _ok = true;
+            Ok = true;
           }
           else
           {
@@ -538,13 +435,13 @@ namespace DiarioProducao.Classes.ProducaoObservacao
         , TxtObservacao
       );
       var numSerie = 0L;
-      _ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
-      if ( _ok )
+      Ok = Db.Insert ( _bcoSql, Sql.TableName, sql.ToString ( ), ref numSerie );
+      if ( Ok )
       {
         NumSerieLmpobs = numSerie;
-        _chavePrimaria = new Pk ( NumSerieLmpobs );
-        _chaveAlternativa = new Ak ( NumSerieLmp, DatObservacao );
-        Select ( _chavePrimaria );
+        ChavePrimaria = new Pk ( NumSerieLmpobs );
+        ChaveAlternativa = new Ak ( NumSerieLmp, DatObservacao );
+        Select ( ChavePrimaria );
       }
     }
 
@@ -565,7 +462,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
         , DatObservacao
         , TxtObservacao
       );
-      _ok = Db.Update ( _bcoSql, sql.ToString ( ) );
+      Ok = Db.Update ( _bcoSql, sql.ToString ( ) );
     }
 
     /// <summary>
@@ -573,7 +470,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
     /// </summary>
     public void Delete ( )
     {
-      _ok = false;
+      Ok = false;
       if ( NumSerieLmpobs != 0L )
       {
         var sqlDependencia = new StringBuilder ( );
@@ -582,7 +479,7 @@ namespace DiarioProducao.Classes.ProducaoObservacao
         var sqlDelete = new StringBuilder ( );
         sqlDelete.Clear ( );
         sqlDelete.AppendFormat ( Sql.DeleteRecord, NumSerieLmpobs );
-        _ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
+        Ok = Db.Delete ( _bcoSql, sqlDependencia.ToString ( ), sqlDelete.ToString ( ) );
       }
     }
 

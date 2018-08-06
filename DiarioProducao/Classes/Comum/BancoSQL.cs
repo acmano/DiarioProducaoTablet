@@ -10,31 +10,16 @@ namespace DiarioProducao.Classes.Comum
   {
     private readonly SqlConnection  _connSql;
     private readonly String         _connectionString;
-    private          String         _mensagemErro;
-    private          int            _identity;
     private          SqlCommand     _cmdSql;
     private          SqlDataReader  _dtrSql;
     private          Boolean        _transacao;
     private          SqlTransaction _sqlTran;
-    private          Boolean        _conectado;
 
-    public bool Conectado
-    {
-      get { return _conectado; }
-      set { _conectado = value; }
-    }
+    public bool Conectado { get; set; }
 
-    public string MensagemErro
-    {
-      get { return _mensagemErro; }
-      set { _mensagemErro = value; }
-    }
+    public string MensagemErro { get; set; }
 
-    public int Identity
-    {
-      get { return _identity; }
-      set { _identity = value; }
-    }
+    public int Identity { get; set; }
 
     public Msde ( AcessoSql acessoSql )
     {
@@ -53,14 +38,14 @@ namespace DiarioProducao.Classes.Comum
       {
         _connSql.ConnectionString = _connectionString;
         _connSql.Open ( );
-        _conectado = true;
+        Conectado = true;
         MensagemErro = "";
         retorno = true;
       }
       catch ( Exception erro )
       {
         MensagemErro = erro.Message;
-        _conectado = false;
+        Conectado = false;
       }
       return retorno;
     }
@@ -133,7 +118,7 @@ namespace DiarioProducao.Classes.Comum
         {
           Identity = Convert.ToInt32 ( _cmdSql.ExecuteScalar ( ) );
         }
-        catch
+        catch (Exception )
         {
           Identity = 0;
         }
@@ -180,8 +165,7 @@ namespace DiarioProducao.Classes.Comum
       }
       _cmdSql.CommandText = procedure;
       _cmdSql.CommandType = CommandType.StoredProcedure;
-      var parm = new SqlParameter ( "@return", SqlDbType.Int );
-      parm.Direction = ParameterDirection.ReturnValue;
+      var parm = new SqlParameter( "@return", SqlDbType.Int ) { Direction = ParameterDirection.ReturnValue };
       _cmdSql.Parameters.Add ( parm );
       try
       {
@@ -208,8 +192,7 @@ namespace DiarioProducao.Classes.Comum
           _cmdSql.Transaction = _sqlTran;
         }
         _cmdSql.CommandText = sql;
-        var da = new SqlDataAdapter ( );
-        da.SelectCommand = _cmdSql;
+        var da = new SqlDataAdapter { SelectCommand = _cmdSql };
         var dt = new DataSet ( );
         da.Fill ( dt );
         da.Dispose ( );
@@ -244,9 +227,9 @@ namespace DiarioProducao.Classes.Comum
             {
               _connSql.Open();
             }
-            catch
+            catch ( Exception )
             {
-              _conectado = false;
+              Conectado = false;
             }
             _cmdSql.CommandTimeout = 2;
             _dtrSql = _cmdSql.ExecuteReader();
@@ -266,13 +249,13 @@ namespace DiarioProducao.Classes.Comum
       {
         _connSql.Close ( );
         MensagemErro = "";
-        _conectado = false;
+        Conectado = false;
       }
       catch ( Exception erro )
       {
         Android.Util.Log.Debug ( "mono", "Close - " + erro.Message );
         MensagemErro = erro.Message;
-        _conectado = false;
+        Conectado = false;
       }
     }
 
@@ -282,11 +265,11 @@ namespace DiarioProducao.Classes.Comum
       {
         _connSql.Close ( );
         _connSql.Dispose ( );
-        _conectado = false;
+        Conectado = false;
       }
-      catch
+      catch ( Exception )
       {
-        _mensagemErro = @"Erro ao destruir a classe";
+        MensagemErro = @"Erro ao destruir a classe";
       }
     }
 

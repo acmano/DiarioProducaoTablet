@@ -6,7 +6,7 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.PopUp.Turno
 {
-  using Android;
+
 
   public class PopUp
   {
@@ -33,13 +33,13 @@ namespace DiarioProducao.Classes.PopUp.Turno
       _acessoSql = acessoSql;
       _codEmpresa = codEmpresa;
     }
-    
+
     public void Exibe ( EditText descricao )
     {
       _aberto = true;
       var inflater = LayoutInflater.From ( _activityMestre );
-//aqui      var vwPopUp = inflater.Inflate ( Resource.Layout.PopUp, null );
-//aqui      _listViewDetalhe = vwPopUp.FindViewById<ListView> ( Resource.Id.lvwDetalhe );
+      var vwPopUp = inflater.Inflate ( Resource.Layout.popup, null );
+      _listViewDetalhe = vwPopUp.FindViewById<ListView> ( Resource.Id.lvwDetalhe );
       _listViewDetalhe.ItemClick += delegate ( object sender, AdapterView.ItemClickEventArgs e )
       {
         var popUpDetalhe = _popUpAdapter.GetItemAtPosition ( e.Position );

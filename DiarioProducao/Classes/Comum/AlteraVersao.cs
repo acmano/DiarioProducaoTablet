@@ -49,7 +49,7 @@ namespace DiarioProducao.Classes.Comum
 
     public void TrocaVersao ( Activity context, string pProcesso, ref Boolean pAtualizaVersao )
     {
-      //Verifica se Existe Nova Versão da Aplicação            
+      //Verifica se Existe Nova Versão da Aplicação
       var file = "/mnt/sdcard/.sistemas/apks/com.lorenzetti.mixprodutos-Signed.apk";
       const string fileMd5 = "/mnt/sdcard/.sistemas/apks/com.lorenzetti.mixprodutos-Signed.md5";
       var processo = "com.lorenzetti.mixprodutos";
@@ -64,14 +64,7 @@ namespace DiarioProducao.Classes.Comum
       }
       var md5Numero = "";
       var md5 = CalculateChecksum ( file );
-      if ( System.IO.File.Exists ( fileMd5 ) )
-      {
-        md5Numero = GetIniProperty ( fileMd5, "MD5" );
-      }
-      else
-      {
-        md5Numero = md5;
-      }
+      md5Numero = System.IO.File.Exists( fileMd5 ) ? GetIniProperty( fileMd5, "MD5" ) : md5;
       PackageManager pm;
       pm = context.PackageManager;
       var info = pm.GetApplicationInfo ( processo, 0 );
@@ -100,7 +93,7 @@ namespace DiarioProducao.Classes.Comum
         }
         if ( md5.ToString ( ).Trim ( ) != md5Numero.ToString ( ).Trim ( ) )
         {
-          _comum.MessageBox ( context, "Atenção. Comunique o erro de instalação ao depto de TI. \n\nSetor de Suporte.\n\nRamal 7332.\n\nProcesso " + processo.ToString ( ) );
+          _comum.MessageBox ( context, "Atenção. Comunique o erro de instalação ao depto de TI. \n\nSetor de Suporte.\n\nRamal 7332.\n\nProcesso " + processo);
         }
       }
       //EOF

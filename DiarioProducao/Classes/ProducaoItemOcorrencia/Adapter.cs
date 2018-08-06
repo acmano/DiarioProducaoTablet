@@ -9,156 +9,61 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.ProducaoItemOcorrencia
 {
-  using Android;
+
 
   public class Detalhe
   {
 
     public class Colunas
     {
-      private Int64 _serieProducaoItemOcorrencia;
-      private Int64 _serieProducaoItem;
-      private Int64 _serieOcorrencia;
-      private DateTime _dataOcorrencia;
-      private String _codigoOcorrencia;
-      private String _descricaoOcorrencia;
 
-      public Int64 SerieProducaoItemOcorrencia
-      {
-        get
-        {
-          return _serieProducaoItemOcorrencia;
-        }
-        set
-        {
-          _serieProducaoItemOcorrencia = value;
-        }
-      }
-
-      public Int64 SerieProducaoItem
-      {
-        get
-        {
-          return _serieProducaoItem;
-        }
-        set
-        {
-          _serieProducaoItem = value;
-        }
-      }
-
-      public Int64 SerieOcorrencia
-      {
-        get
-        {
-          return _serieOcorrencia;
-        }
-        set
-        {
-          _serieOcorrencia = value;
-        }
-      }
-
-      public DateTime DataOcorrencia
-      {
-        get
-        {
-          return _dataOcorrencia;
-        }
-        set
-        {
-          _dataOcorrencia = value;
-        }
-      }
-
-      public String CodigoOcorrencia
-      {
-        get
-        {
-          return _codigoOcorrencia;
-        }
-        set
-        {
-          _codigoOcorrencia = value;
-        }
-      }
-
-      public String DescricaoOcorrencia
-      {
-        get
-        {
-          return _descricaoOcorrencia;
-        }
-        set
-        {
-          _descricaoOcorrencia = value;
-        }
-      }
+      public Int64 SerieProducaoItemOcorrencia { get; set; }
+      public Int64 SerieProducaoItem { get; set; }
+      public Int64 SerieOcorrencia { get; set; }
+      public DateTime DataOcorrencia { get; set; }
+      public String CodigoOcorrencia { get; set; }
+      public String DescricaoOcorrencia { get; set; }
 
       public Colunas ( )
       {
-        _serieProducaoItemOcorrencia = 0L;
-        _serieProducaoItem = 0L;
-        _serieOcorrencia = 0L;
-        _dataOcorrencia = DateTime.MinValue;
-        _codigoOcorrencia = String.Empty;
-        _descricaoOcorrencia = String.Empty;
+        SerieProducaoItemOcorrencia = 0L;
+        SerieProducaoItem = 0L;
+        SerieOcorrencia = 0L;
+        DataOcorrencia = DateTime.MinValue;
+        CodigoOcorrencia = String.Empty;
+        DescricaoOcorrencia = String.Empty;
       }
 
       public Colunas ( Int64 serieProducaoItemOcorrencia, Int64 serieProducaoItem, Int64 serieOcorrencia, DateTime dataOcorrencia, String codigoOcorrencia, String descricaoOcorrencia )
       {
-        _serieProducaoItemOcorrencia = serieProducaoItemOcorrencia;
-        _serieProducaoItem = serieProducaoItem;
-        _serieOcorrencia = serieOcorrencia;
-        _dataOcorrencia = dataOcorrencia;
-        _codigoOcorrencia = codigoOcorrencia;
-        _descricaoOcorrencia = descricaoOcorrencia;
+        SerieProducaoItemOcorrencia = serieProducaoItemOcorrencia;
+        SerieProducaoItem = serieProducaoItem;
+        SerieOcorrencia = serieOcorrencia;
+        DataOcorrencia = dataOcorrencia;
+        CodigoOcorrencia = codigoOcorrencia;
+        DescricaoOcorrencia = descricaoOcorrencia;
       }
 
       public Colunas ( SqlDataReader reader )
       {
-        _serieProducaoItemOcorrencia = Convert.ToInt64 ( reader [ "serie_producao_item_ocorrencia" ] );
-        _serieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
-        _serieOcorrencia = Convert.ToInt64 ( reader [ "serie_ocorrencia" ] );
-        _dataOcorrencia = Convert.ToDateTime ( reader [ "data_Ocorrencia" ] );
-        _codigoOcorrencia = reader [ "codigo_ocorrencia" ].ToString ( );
-        _descricaoOcorrencia = reader [ "descricao_ocorrencia" ].ToString ( );
+        SerieProducaoItemOcorrencia = Convert.ToInt64 ( reader [ "serie_producao_item_ocorrencia" ] );
+        SerieProducaoItem = Convert.ToInt64 ( reader [ "serie_producao_item" ] );
+        SerieOcorrencia = Convert.ToInt64 ( reader [ "serie_ocorrencia" ] );
+        DataOcorrencia = Convert.ToDateTime ( reader [ "data_Ocorrencia" ] );
+        CodigoOcorrencia = reader [ "codigo_ocorrencia" ].ToString ( );
+        DescricaoOcorrencia = reader [ "descricao_ocorrencia" ].ToString ( );
       }
 
     }
 
-    private Int64 _serieProducaoItem;
-    private Colunas _colunasDetalhe;
-
-    public Int64 SerieProducaoItem
-    {
-      get
-      {
-        return _serieProducaoItem;
-      }
-      set
-      {
-        _serieProducaoItem = value;
-      }
-    }
-
-    public Colunas ColunasDetalhe
-    {
-      get
-      {
-        return _colunasDetalhe;
-      }
-      set
-      {
-        _colunasDetalhe = value;
-      }
-    }
+    public Int64 SerieProducaoItem { get; set; }
+    public Colunas ColunasDetalhe { get; set; }
 
 
     private void DetalheVazio ( )
     {
-      _serieProducaoItem = 0L;
-      _colunasDetalhe = new Colunas ( );
+      SerieProducaoItem = 0L;
+      ColunasDetalhe = new Colunas ( );
     }
 
     public Detalhe ( )
@@ -168,16 +73,16 @@ namespace DiarioProducao.Classes.ProducaoItemOcorrencia
 
     public Detalhe ( Int64 serieProducaoOcorrencia, Int64 serieProducaoItem, Int64 serieOcorrencia, DateTime dataOcorrencia, String codigoOcorrencia, String descricaoOcorrencia )
     {
-      _serieProducaoItem = serieProducaoItem;
-      _colunasDetalhe = new Colunas ( serieProducaoOcorrencia, serieProducaoItem, serieOcorrencia, dataOcorrencia, codigoOcorrencia, descricaoOcorrencia );
+      SerieProducaoItem = serieProducaoItem;
+      ColunasDetalhe = new Colunas ( serieProducaoOcorrencia, serieProducaoItem, serieOcorrencia, dataOcorrencia, codigoOcorrencia, descricaoOcorrencia );
     }
 
     public Detalhe ( SqlDataReader reader )
     {
       try
       {
-        _serieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
-        _colunasDetalhe = new Colunas ( reader );
+        SerieProducaoItem = Convert.ToInt64 ( ( reader [ "serie_producao_item" ] ) );
+        ColunasDetalhe = new Colunas ( reader );
       }
       catch ( Exception )
       {
@@ -248,26 +153,22 @@ namespace DiarioProducao.Classes.ProducaoItemOcorrencia
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.ItemOcorrencia, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.itemocorrencia, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-        //aqui
-        //var dataOcorrencia = view.FindViewById ( Resource.Id.txtDataOcorrencia ) as TextView;
-        //if ( dataOcorrencia != null )
-        //{
-        //  dataOcorrencia.SetText ( detalhe.ColunasDetalhe.DataOcorrencia.ToString ( "G" ).Trim ( ), TextView.BufferType.Normal );
-        //}
-        //var codigoOcorrencia = view.FindViewById ( Resource.Id.txtCodigoOcorrencia ) as TextView;
-        //if ( codigoOcorrencia != null )
-        //{
-        //  codigoOcorrencia.SetText ( detalhe.ColunasDetalhe.CodigoOcorrencia.Trim ( ), TextView.BufferType.Normal );
-        //}
-        //var descricaoOcorrencia = view.FindViewById ( Resource.Id.txtDescricaoOcorrencia ) as TextView;
-        //if ( descricaoOcorrencia != null )
-        //{
-        //  descricaoOcorrencia.SetText ( detalhe.ColunasDetalhe.DescricaoOcorrencia.Trim ( ), TextView.BufferType.Normal );
-        //}
+        if (view.FindViewById( Resource.Id.txtDataOcorrencia ) is TextView dataOcorrencia)
+        {
+          dataOcorrencia.SetText( detalhe.ColunasDetalhe.DataOcorrencia.ToString( "G" ).Trim(), TextView.BufferType.Normal );
+        }
+        if (view.FindViewById( Resource.Id.txtCodigoOcorrencia ) is TextView codigoOcorrencia)
+        {
+          codigoOcorrencia.SetText( detalhe.ColunasDetalhe.CodigoOcorrencia.Trim(), TextView.BufferType.Normal );
+        }
+        if (view.FindViewById( Resource.Id.txtDescricaoOcorrencia ) is TextView descricaoOcorrencia)
+        {
+          descricaoOcorrencia.SetText( detalhe.ColunasDetalhe.DescricaoOcorrencia.Trim(), TextView.BufferType.Normal );
+        }
       }
       return view;
     }

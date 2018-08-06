@@ -9,7 +9,7 @@ using DiarioProducao.Classes.Comum;
 
 namespace DiarioProducao.Classes.PopUp.Turno
 {
-  using Android;
+
 
   public class Detalhe
   {
@@ -46,7 +46,7 @@ namespace DiarioProducao.Classes.PopUp.Turno
           linha.Codigo = reader [ "codigo" ].ToString ( );
           linha.Descricao = reader [ "descricao" ].ToString ( );
         }
-        catch
+        catch ( Exception )
         {
           linha.NumSerie = 0L;
           linha.Codigo = String.Empty;
@@ -93,22 +93,18 @@ namespace DiarioProducao.Classes.PopUp.Turno
       var view = convertView;
       if ( convertView == null )
       {
-//aqui        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.PopUpDetalhe, parent, false ) ) as LinearLayout;
+        view = ( _activityMestre.LayoutInflater.Inflate ( Resource.Layout.popupdetalhe, parent, false ) ) as LinearLayout;
       }
       if ( view != null )
       {
-/*aqui
-        var codigo = view.FindViewById ( Resource.Id.txtCodigoItem ) as TextView;
-        var descricao = view.FindViewById ( Resource.Id.txtDescricaoItem ) as TextView;
-        if ( codigo != null )
+        if (view.FindViewById( Resource.Id.txtCodigoItem ) is TextView codigo)
         {
-          codigo.SetText ( item.Codigo.Trim ( ), TextView.BufferType.Normal );
+          codigo.SetText( item.Codigo.Trim(), TextView.BufferType.Normal );
         }
-        if ( descricao != null )
+        if (view.FindViewById( Resource.Id.txtDescricaoItem ) is TextView descricao)
         {
-          descricao.SetText ( item.Descricao.Trim ( ), TextView.BufferType.Normal );
+          descricao.SetText( item.Descricao.Trim(), TextView.BufferType.Normal );
         }
-        */
       }
       return view;
     }
